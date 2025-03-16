@@ -1,92 +1,165 @@
-<?xml version="1.0" encoding="UTF-8"?>
+package controllers;
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Font?>
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import models.OfficeHours;
+import services.OfficeHoursService;
+import java.util.ArrayList;
+import java.util.List;
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.controller.DefineSemesterOfficeHoursController"
-      spacing="15"
-      prefWidth="500"
-      prefHeight="400"
-      style="-fx-background-color: white;">
-
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
-
-    <Label text="Define Semester's Office Hours"
-           style="-fx-font-weight: bold;">
-        <font>
-            <Font size="18"/>
-        </font>
-    </Label>
+/**
+ * Controller for the Define Semester's Office Hours page
+ * 
+ * @author Team 2
+ */
+public class OfficeHoursController {
     
-    <Separator />
+    @FXML
+    private ComboBox<String> semesterComboBox;
     
-    <GridPane hgap="10" vgap="10">
-        <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
-        </padding>
+    @FXML
+    private TextField yearTextField;
+    
+    @FXML
+    private CheckBox mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, 
+                     thursdayCheckBox, fridayCheckBox;
+    
+    @FXML
+    private Button submitButton, cancelButton;
+    
+    @FXML
+    private Label errorMessageLabel;
+    
+    private OfficeHoursService officeHoursService = new OfficeHoursService();
+    
+    /**
+     * Initialize method called after FXML fields are populated
+     */
+    @FXML
+    public void initialize() {
+        // Setup the semester combo box with required options
+        semesterComboBox.getItems().addAll("Spring", "Summer", "Fall", "Winter");
         
-        <!-- Semester Selection -->
-        <Label text="Semester:" 
-               GridPane.rowIndex="0" 
-               GridPane.columnIndex="0"
-               style="-fx-font-weight: bold;"/>
-               
-        <ComboBox fx:id="semesterComboBox" 
-                  promptText="Select Semester"
-                  prefWidth="200"
-                  GridPane.rowIndex="0" 
-                  GridPane.columnIndex="1"/>
-        
-        <!-- Year Input -->
-        <Label text="Year:" 
-               GridPane.rowIndex="1" 
-               GridPane.columnIndex="0"
-               style="-fx-font-weight: bold;"/>
-               
-        <TextField fx:id="yearTextField" 
-                   promptText="Enter 4-digit year"
-                   prefWidth="200"
-                   GridPane.rowIndex="1" 
-                   GridPane.columnIndex="1"/>
-        
-        <!-- Days Selection -->
-        <Label text="Days:" 
-               GridPane.rowIndex="2" 
-               GridPane.columnIndex="0"
-               style="-fx-font-weight: bold;"/>
-               
-        <VBox spacing="5" 
-              GridPane.rowIndex="2" 
-              GridPane.columnIndex="1">
-            <CheckBox fx:id="mondayCheckBox" text="Monday (M)"/>
-            <CheckBox fx:id="tuesdayCheckBox" text="Tuesday (T)"/>
-            <CheckBox fx:id="wednesdayCheckBox" text="Wednesday (W)"/>
-            <CheckBox fx:id="thursdayCheckBox" text="Thursday (Th)"/>
-            <CheckBox fx:id="fridayCheckBox" text="Friday (F)"/>
-        </VBox>
-    </GridPane>
+        // Clear any error messages on load
+        errorMessageLabel.setText("");
+    }
     
-    <!-- Error Messages -->
-    <Label fx:id="errorMessageLabel" 
-           textFill="RED"
-           wrapText="true"/>
+    /**
+     * Handler for the submit button
+     * 
+     * @param event the action event
+     */
+    @FXML
+    private void handleSubmit(ActionEvent event) {
+        // Clear any previous error messages
+        errorMessageLabel.setText("");
+        
+        // Validate inputs before proceeding
+        if (validateInputs()) {
+            // Create the office hours object from form data
+            OfficeHours officeHours = createOfficeHoursObject();
+            
+            // Save the data (optional in this version)
+            boolean saved = officeHoursService.saveOfficeHours(officeHours);
+            
+            if (saved) {
+                showAlert("Success", "Office hours defined successfully");
+            } else {
+                // This case is only reached if saving is attempted but fails
+                errorMessageLabel.setText("Error saving office hours. Please try again.");
+                return;
+            }
+            
+            // Return to home page
+            PageNavigator.navigateTo("Home");
+        }
+    }
     
-    <!-- Buttons -->
-    <HBox spacing="10" alignment="CENTER">
-        <Button fx:id="submitButton" 
-                text="Submit" 
-                onAction="#handleSubmit"
-                prefWidth="100"/>
-                
-        <Button fx:id="cancelButton" 
-                text="Cancel" 
-                onAction="#handleCancel"
-                prefWidth="100"/>
-    </HBox>
-</VBox>
+    /**
+     * Handler for the cancel button
+     * 
+     * @param event the action event
+     */
+    @FXML
+    private void handleCancel(ActionEvent event) {
+        // Navigate back to home page without saving
+        PageNavigator.navigateTo("Home");
+    }
+    
+    /**
+     * Validates user inputs and displays appropriate error messages
+     * 
+     * @return true if all inputs are valid, false otherwise
+     */
+    private boolean validateInputs() {
+        // Check if semester is selected
+        if (semesterComboBox.getValue() == null) {
+            errorMessageLabel.setText("Please select a semester");
+            return false;
+        }
+        
+        // Validate year input
+        String yearText = yearTextField.getText().trim();
+        if (yearText.isEmpty()) {
+            errorMessageLabel.setText("Please enter a year");
+            return false;
+        }
+        
+        try {
+            int year = Integer.parseInt(yearText);
+            if (year < 2000 || year > 2100) {
+                errorMessageLabel.setText("Please enter a valid year (2000-2100)");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            errorMessageLabel.setText("Please enter a valid 4-digit year");
+            return false;
+        }
+        
+        // Check if at least one day is selected
+        if (!mondayCheckBox.isSelected() && !tuesdayCheckBox.isSelected() && 
+            !wednesdayCheckBox.isSelected() && !thursdayCheckBox.isSelected() && 
+            !fridayCheckBox.isSelected()) {
+            
+            errorMessageLabel.setText("Please select at least one day");
+            return false;
+        }
+        
+        // All validations passed
+        return true;
+    }
+    
+    /**
+     * Creates an OfficeHours object from the form data
+     * 
+     * @return the created OfficeHours object
+     */
+    private OfficeHours createOfficeHoursObject() {
+        String semester = semesterComboBox.getValue();
+        int year = Integer.parseInt(yearTextField.getText().trim());
+        
+        List<String> days = new ArrayList<>();
+        if (mondayCheckBox.isSelected()) days.add("M");
+        if (tuesdayCheckBox.isSelected()) days.add("T");
+        if (wednesdayCheckBox.isSelected()) days.add("W");
+        if (thursdayCheckBox.isSelected()) days.add("Th");
+        if (fridayCheckBox.isSelected()) days.add("F");
+        
+        return new OfficeHours(semester, year, days);
+    }
+    
+    /**
+     * Shows an alert dialog with the given title and message
+     * 
+     * @param title the alert title
+     * @param message the alert message
+     */
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
