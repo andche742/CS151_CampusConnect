@@ -1,11 +1,11 @@
-# Name of application: 
+# Name of application: Campus Connect
 # Version: 0.2
 
 # who did what:
-1. Meera Vyas - Form Page
-2. 
-3. 
-3. 
+1. Sneha - controllers, fxml files, Main, PageNavigator
+2. Andrew - Main, PageNavigator
+3. Meera - DefineSemesterOfficeHours
+4. Rehan - Home
 
 
 # Any other instruction that users need to know:

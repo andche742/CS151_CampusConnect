@@ -61,18 +61,19 @@ public class OfficeHoursController {
             // Create the office hours object from form data
             OfficeHours officeHours = createOfficeHoursObject();
 
-            // Save the data (optional in this version)
-            boolean saved = officeHoursService.saveOfficeHours(officeHours);
+            // saveOfficeHours to be implemented later
+            /* boolean saved = officeHoursService.saveOfficeHours(officeHours);
             
             if (saved) {
-                showAlert("Success", "Office hours defined successfully");
+            showAlert("Success", "Office hours defined successfully");
             } else {
-                // This case is only reached if saving is attempted but fails
-                errorMessageLabel.setText("Error saving office hours. Please try again.");
-                return;
-            }
+            // This case is only reached if saving is attempted but fails
+            errorMessageLabel.setText("Error saving office hours. Please try again.");
+            return;
+            } */
             
             // Return to home page
+            showAlert("Success", "Office hours defined successfully");
             PageNavigator.navigateTo("Home");
         }
     }
@@ -109,8 +110,8 @@ public class OfficeHoursController {
         
         try {
             int year = Integer.parseInt(yearText);
-            if (year < 2000 || year > 2100) {
-                errorMessageLabel.setText("Please enter a valid year (2000-2100)");
+            if (year < 2000 || year > 3000) {
+                errorMessageLabel.setText("Please enter a valid year");
                 return false;
             }
         } catch (NumberFormatException e) {

@@ -1,9 +1,14 @@
-Campus Connect - Office Hours Management System
-Introduction
-The Campus Connect Office Hours Management System is a JavaFX-based application that enables professors to define and manage their semester office hours efficiently. This system provides a user-friendly interface for selecting a semester, entering the academic year, and choosing available office hour days.
+# Name of application: Campus Connect
+# Version: 0.2
 
-  tasks and responsibilities 
-  1. Sneha - Set up the fxml classes as per mockups
-  2. Andrew - Set up the initial project structure, Pages Navigator and Main class
-  3. Meera - Set up the officeController java class
-  4. Rehan - Set up the homeComtroller java class
+# who did what:
+1. Sneha - controllers, fxml files, Main, PageNavigator
+2. Andrew - Main, PageNavigator
+3. Meera - DefineSemesterOfficeHours
+4. Rehan - Home
+
+
+# Any other instruction that users need to know:
+
+
+
