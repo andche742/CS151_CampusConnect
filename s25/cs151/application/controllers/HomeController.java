@@ -1,4 +1,7 @@
+package controllers;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -6,10 +9,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+
+
+public class HomeController extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HomeController.class.getResource("/pages/Home.fxml"));
         Pane root = fxmlLoader.load();
         root.setStyle("-fx-background-color: blue;");
 
@@ -28,6 +33,10 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public void onHelloButtonClick(ActionEvent actionEvent) {
+        System.out.println("Hello button clicked!");
     }
 }
 
