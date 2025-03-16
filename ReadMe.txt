@@ -2,7 +2,7 @@
 # Version: 0.2
 
 # who did what:
-1. 
+1. Meera Vyas
 2. 
 3. 
 3. 
