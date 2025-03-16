@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import services.PageNavigator;
 
 public class Main extends Application {
     @Override

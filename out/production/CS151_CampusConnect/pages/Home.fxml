@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Welcome to the Home Page of CampusConnect!" onAction="#onHelloButtonClick"/>
+    <!-- Top Right Icons (Calendar & Notifications) -->
+    <HBox alignment="TOP_RIGHT" spacing="0">
+        <Button alignment="TOP_RIGHT" style="-fx-background-color: transparent; -fx-text-fill: white;" text="📅 Calendar" />
+        <Button style="-fx-background-color: transparent; -fx-text-fill: white;" text="🔔 Notifications" />
+    </HBox>
 
-    <Button text="Define Semester's Office Hours" onAction="#goToDefineSemesterOfficeHours"/>
+
+    <!-- Header Section -->
+    <HBox alignment="TOP_LEFT" spacing="0">
+        <Label alignment="TOP_LEFT" style="-fx-font-size: 26px; -fx-text-fill: white; -fx-font-weight: bold;" text="Campus Connect" />
+        <ImageView fitHeight="30" fitWidth="30" /> <!-- Add icon for logo if needed -->
+    </HBox>
+
+
+    <!-- Welcome Section -->
+    <VBox alignment="CENTER" spacing="3">
+        <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="Welcome, [Professor Name]!" />
+        <Label style="-fx-font-size: 12px; -fx-text-fill: white;" text="Helping you stay connected, one office hour at a time." />
+    </VBox>
+
+
+
+    <GridPane alignment="CENTER" hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" prefWidth="120" />
+            <ColumnConstraints halignment="CENTER" prefWidth="120" />
+            <ColumnConstraints halignment="CENTER" prefWidth="140" />
+            <ColumnConstraints halignment="CENTER" prefWidth="100" />
+        </columnConstraints>
+
+
+        <rowConstraints>
+            <RowConstraints prefHeight="50" valignment="CENTER" />
+        </rowConstraints>
+        <Button fx:id="officeHoursButton" onAction="#goToDefineSemesterOfficeHours"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="⏰ Office Hours" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button fx:id="timeSlotsButton" onAction="#goToDefineSemesterOfficeHours"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text=" 📅 Time Slots" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button fx:id="coursesButton" onAction="#goToDefineSemesterOfficeHours"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="📚 Courses" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button fx:id="searchButton" onAction="#goToDefineSemesterOfficeHours"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="🔍 Search" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+    </GridPane>
+
 </VBox>

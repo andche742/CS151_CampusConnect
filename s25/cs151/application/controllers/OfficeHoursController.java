@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.OfficeHours;
 import services.OfficeHoursService;
+import services.PageNavigator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class OfficeHoursController {
     
     @FXML
     private Label errorMessageLabel;
-    
+
     private OfficeHoursService officeHoursService = new OfficeHoursService();
     
     /**
@@ -59,7 +60,7 @@ public class OfficeHoursController {
         if (validateInputs()) {
             // Create the office hours object from form data
             OfficeHours officeHours = createOfficeHoursObject();
-            
+
             // Save the data (optional in this version)
             boolean saved = officeHoursService.saveOfficeHours(officeHours);
             
@@ -162,4 +163,5 @@ public class OfficeHoursController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }
