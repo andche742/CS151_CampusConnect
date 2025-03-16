@@ -2,7 +2,9 @@ package controllers;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -36,7 +38,27 @@ public class HomeController extends Application {
     }
 
     public void onHelloButtonClick(ActionEvent actionEvent) {
-        System.out.println("Hello button clicked!");
+       // System.out.println("Hello button clicked!");
+
     }
+
+    @FXML
+    private void goToDefineSemesterOfficeHours(ActionEvent event) {
+        try {
+            // Load Define Semester’s Office Hours Page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/DefineSemesterOfficeHours.fxml"));
+            Parent root = loader.load();
+
+            // Get current stage and switch scene
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Define Semester's Office Hours");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading DefineSemester.fxml");
+        }
+    }
+
 }
 

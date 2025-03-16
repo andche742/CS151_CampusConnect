@@ -12,5 +12,7 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <Button text="Home!" onAction="#onHelloButtonClick"/>
+    <Button text="Welcome to the Home Page of CampusConnect!" onAction="#onHelloButtonClick"/>
+
+    <Button text="Define Semester's Office Hours" onAction="#goToDefineSemesterOfficeHours"/>
 </VBox>
