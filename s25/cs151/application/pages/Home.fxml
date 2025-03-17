@@ -7,14 +7,14 @@
 <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
 
     <!-- Top Right Icons (Calendar & Notifications) -->
-    <HBox alignment="TOP_RIGHT" spacing="0">
+    <HBox alignment="TOP_RIGHT" spacing="1">
         <Button style="-fx-background-color: transparent; -fx-text-fill: white;" text="📅 Calendar" />
         <Button style="-fx-background-color: transparent; -fx-text-fill: white;" text="🔔 Notifications" />
     </HBox>
 
 
     <!-- Header Section -->
-    <HBox alignment="TOP_LEFT" spacing="0">
+    <HBox spacing="2">
         <Label style="-fx-font-size: 26px; -fx-text-fill: white; -fx-font-weight: bold;" text="Campus Connect" />
         <!-- <ImageView fitHeight="30" fitWidth="30" />  -->
     </HBox>

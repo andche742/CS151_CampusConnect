@@ -48,11 +48,9 @@ public class OfficeHoursController {
     
     /**
      * Handler for the submit button
-     * 
-     * @param event the action event
      */
     @FXML
-    private void handleSubmit(ActionEvent event) {
+    private void handleSubmit() {
         // Clear any previous error messages
         errorMessageLabel.setText("");
         
@@ -61,7 +59,9 @@ public class OfficeHoursController {
             // Create the office hours object from form data
             OfficeHours officeHours = createOfficeHoursObject();
 
-            // saveOfficeHours to be implemented later
+
+
+            // saveOfficeHours to be implemented later in officehours service
             /* boolean saved = officeHoursService.saveOfficeHours(officeHours);
             
             if (saved) {
@@ -80,11 +80,9 @@ public class OfficeHoursController {
     
     /**
      * Handler for the cancel button
-     * 
-     * @param event the action event
      */
     @FXML
-    private void handleCancel(ActionEvent event) {
+    private void handleCancel() {
         // Navigate back to home page without saving
         PageNavigator.navigateTo("Home");
     }

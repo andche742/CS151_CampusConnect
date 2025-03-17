@@ -4,19 +4,19 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
 
     <!-- Top Right Icons (Calendar & Notifications) -->
-    <HBox alignment="TOP_RIGHT" spacing="0">
-        <Button alignment="TOP_RIGHT" style="-fx-background-color: transparent; -fx-text-fill: white;" text="📅 Calendar" />
+    <HBox alignment="TOP_RIGHT" spacing="1">
+        <Button style="-fx-background-color: transparent; -fx-text-fill: white;" text="📅 Calendar" />
         <Button style="-fx-background-color: transparent; -fx-text-fill: white;" text="🔔 Notifications" />
     </HBox>
 
 
     <!-- Header Section -->
-    <HBox alignment="TOP_LEFT" spacing="0">
-        <Label alignment="TOP_LEFT" style="-fx-font-size: 26px; -fx-text-fill: white; -fx-font-weight: bold;" text="Campus Connect" />
-        <ImageView fitHeight="30" fitWidth="30" /> <!-- Add icon for logo if needed -->
+    <HBox spacing="2">
+        <Label style="-fx-font-size: 26px; -fx-text-fill: white; -fx-font-weight: bold;" text="Campus Connect" />
+        <!-- <ImageView fitHeight="30" fitWidth="30" />  -->
     </HBox>
 
 
@@ -27,27 +27,30 @@
     </VBox>
 
 
-
+    <!-- Buttons for main features -->
     <GridPane alignment="CENTER" hgap="10" vgap="10">
         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" prefWidth="120" />
-            <ColumnConstraints halignment="CENTER" prefWidth="120" />
-            <ColumnConstraints halignment="CENTER" prefWidth="140" />
-            <ColumnConstraints halignment="CENTER" prefWidth="100" />
+            <ColumnConstraints halignment="CENTER" prefWidth="150" />
+            <ColumnConstraints halignment="CENTER" prefWidth="150" />
+            <ColumnConstraints halignment="CENTER" prefWidth="150" />
+            <ColumnConstraints halignment="CENTER" prefWidth="150" />
         </columnConstraints>
 
 
         <rowConstraints>
             <RowConstraints prefHeight="50" valignment="CENTER" />
+            <RowConstraints prefHeight="50" valignment="CENTER" />
+            <RowConstraints prefHeight="500 " valignment="CENTER" />
+            <RowConstraints prefHeight="50" valignment="CENTER" />
         </rowConstraints>
         <Button fx:id="officeHoursButton" onAction="#goToDefineSemesterOfficeHours"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="⏰ Office Hours" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <Button fx:id="timeSlotsButton" onAction="#goToDefineSemesterOfficeHours"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text=" 📅 Time Slots" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <Button fx:id="coursesButton" onAction="#goToDefineSemesterOfficeHours"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="📚 Courses" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <Button fx:id="searchButton" onAction="#goToDefineSemesterOfficeHours"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="🔍 Search" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="⏰ Office Hours" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Button fx:id="timeSlotsButton" onAction="#placeHolder"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text=" 📅 Time Slots" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Button fx:id="coursesButton" onAction="#placeHolder"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="📚 Courses" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Button fx:id="searchButton" onAction="#placeHolder"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" text="🔍 Search" GridPane.columnIndex="3" GridPane.rowIndex="3" />
     </GridPane>
 
 </VBox>
