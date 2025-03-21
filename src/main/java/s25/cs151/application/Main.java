@@ -1,6 +1,8 @@
+package s25.cs151.application;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import services.PageNavigator;
+import s25.cs151.application.services.PageNavigator;
+
 
 public class Main extends Application {
     @Override

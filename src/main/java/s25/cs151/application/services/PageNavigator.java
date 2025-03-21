@@ -1,4 +1,4 @@
-package services;
+package s25.cs151.application.services;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +16,7 @@ public class PageNavigator {
     // use this to navigate between pages ex: navigateTo("Home")
     public static void navigateTo(String page) {
         try {
-            FXMLLoader loader = new FXMLLoader(PageNavigator.class.getResource("/pages/" + page + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(PageNavigator.class.getResource("/s25/cs151/application/pages/" + page + ".fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root, 800, 600);
