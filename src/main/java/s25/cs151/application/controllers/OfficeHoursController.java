@@ -4,8 +4,11 @@ package s25.cs151.application.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import s25.cs151.application.models.OfficeHours;
+import s25.cs151.application.services.DbService;
 import s25.cs151.application.services.OfficeHoursService;
 import s25.cs151.application.services.PageNavigator;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class OfficeHoursController {
     @FXML
     private Label errorMessageLabel;
 
-    private OfficeHoursService officeHoursService = new OfficeHoursService();
+    //private OfficeHoursService officeHoursService = new OfficeHoursService();
     
     /**
      * Initialize method called after FXML fields are populated
@@ -59,22 +62,26 @@ public class OfficeHoursController {
             // Create the office hours object from form data
             OfficeHours officeHours = createOfficeHoursObject();
 
+            boolean saved = false;
 
+            try {
+                saved = DbService.saveOfficeHours(officeHours); // Assume this method returns a boolean
+            } catch (SQLException e) {
+                if (e.getMessage().contains("UNIQUE")) {
+                    showAlert("Duplicate Entry", "This office hour entry already exists.");
+                } else {
+                    showAlert("Database Error", "Something went wrong:\n" + e.getMessage());
+                    e.printStackTrace();
+                }
+                return; // Prevents proceeding if an exception was caught
+            }
 
-            // saveOfficeHours to be implemented later in officehours service
-            /* boolean saved = officeHoursService.saveOfficeHours(officeHours);
-            
             if (saved) {
-            showAlert("Success", "Office hours defined successfully");
+                showAlert("Success", "Office hours defined successfully.");
+                PageNavigator.navigateTo("Home"); // Navigate only on success
             } else {
-            // This case is only reached if saving is attempted but fails
-            errorMessageLabel.setText("Error saving office hours. Please try again.");
-            return;
-            } */
-            
-            // Return to home page
-            showAlert("Success", "Office hours defined successfully");
-            PageNavigator.navigateTo("Home");
+                errorMessageLabel.setText("Error saving office hours. Please try again.");
+            }
         }
     }
     
@@ -132,7 +139,6 @@ public class OfficeHoursController {
     
     /**
      * Creates an OfficeHours object from the form data
-     * 
      * @return the created OfficeHours object
      */
     private OfficeHours createOfficeHoursObject() {
@@ -148,6 +154,8 @@ public class OfficeHoursController {
         
         return new OfficeHours(semester, year, days);
     }
+
+
     
     /**
      * Shows an alert dialog with the given title and message
