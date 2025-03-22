@@ -1,11 +1,12 @@
 package s25.cs151.application.services;
-import s25.cs151.application.models.OfficeHours;
-import s25.cs151.application.models.ConnectDB;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import s25.cs151.application.models.ConnectDB;
+import s25.cs151.application.models.OfficeHours;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DbService {
 
@@ -51,19 +52,50 @@ public class DbService {
         }
     }
 
-    public static void dropOfficeHoursTable() {
-        String sql = "DROP TABLE IF EXISTS office_hours";
-
+    public static List<OfficeHours> getOfficeHours() {
+        List<OfficeHours> list = new ArrayList<>();
+        String sql = """
+                    SELECT * FROM office_hours
+                     ORDER BY
+                    year DESC,
+                    CASE semester
+                    WHEN 'Spring' THEN 1
+                    WHEN 'Summer' THEN 2
+                    WHEN 'Fall' THEN 3
+                    ELSE 4
+                END DESC
+                """;
         try (
                 Connection conn = ConnectDB.getConnection();
-                Statement stmt = conn.createStatement()
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet resultSet = stmt.executeQuery()
         ) {
-            stmt.executeUpdate(sql);
-            System.out.println("🗑️ Office Hours table dropped.");
+            while (resultSet.next()) {
+                String semester = resultSet.getString("semester");
+                int year = resultSet.getInt("year");
+                List<String> days = Arrays.asList(resultSet.getString("days").split(","));
+                list.add(new OfficeHours(semester, year, days));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return list;
     }
+
+
+//    public static void dropOfficeHoursTable() {
+//        String sql = "DROP TABLE IF EXISTS office_hours";
+//
+//        try (
+//                Connection conn = ConnectDB.getConnection();
+//                Statement stmt = conn.createStatement()
+//        ) {
+//            stmt.executeUpdate(sql);
+//            System.out.println("🗑️ Office Hours table dropped.");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 }
