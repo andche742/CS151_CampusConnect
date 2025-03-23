@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;"
+      xmlns="http://javafx.com/javafx/23.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="s25.cs151.application.controllers.TableViewController">
+
+<!-- Header -->
+<Label text="📋 Semester Office Hours"
+       style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+<!-- TableView Section -->
+<TableView fx:id="officeHoursTable" prefWidth="600" prefHeight="300">
+    <columns>
+        <TableColumn fx:id="yearColumn" text="Year" prefWidth="150"/>
+        <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="150"/>
+        <TableColumn fx:id="daysColumn" text="Days" prefWidth="300"/>
+    </columns>
+</TableView>
+
+<!-- OK Button -->
+<Button fx:id="okButton"
+        text="OK"
+        onAction="#handleOkButton"
+        style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
+</VBox>

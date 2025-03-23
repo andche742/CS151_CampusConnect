@@ -18,7 +18,7 @@ public class DbService {
             semester TEXT NOT NULL,
             year INTEGER NOT NULL,
             days TEXT NOT NULL,
-            UNIQUE(semester, year, days)
+            UNIQUE(semester, year)
         );
     """;
         try (
@@ -59,10 +59,11 @@ public class DbService {
                      ORDER BY
                     year DESC,
                     CASE semester
-                    WHEN 'Spring' THEN 1
-                    WHEN 'Summer' THEN 2
-                    WHEN 'Fall' THEN 3
-                    ELSE 4
+                            WHEN 'Winter' THEN 4
+                            WHEN 'Fall' THEN 3
+                            WHEN 'Summer' THEN 2
+                            WHEN 'Spring' THEN 1
+                            ELSE 0
                 END DESC
                 """;
         try (
@@ -83,19 +84,19 @@ public class DbService {
     }
 
 
-//    public static void dropOfficeHoursTable() {
-//        String sql = "DROP TABLE IF EXISTS office_hours";
-//
-//        try (
-//                Connection conn = ConnectDB.getConnection();
-//                Statement stmt = conn.createStatement()
-//        ) {
-//            stmt.executeUpdate(sql);
-//            System.out.println("🗑️ Office Hours table dropped.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public static void dropOfficeHoursTable() {
+        String sql = "DROP TABLE IF EXISTS office_hours";
+
+        try (
+                Connection conn = ConnectDB.getConnection();
+                Statement stmt = conn.createStatement()
+        ) {
+            stmt.executeUpdate(sql);
+            System.out.println("🗑️ Office Hours table dropped.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

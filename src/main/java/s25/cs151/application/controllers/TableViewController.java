@@ -1,0 +1,49 @@
+package s25.cs151.application.controllers;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import s25.cs151.application.models.OfficeHours;
+import s25.cs151.application.services.DbService;
+import s25.cs151.application.services.PageNavigator;
+
+import java.util.List;
+
+public class TableViewController {
+
+    public Button okButton;
+    // for table view
+    @FXML
+    private TableView<OfficeHours> officeHoursTable;
+    @FXML
+    private TableColumn<OfficeHours, Integer> yearColumn;
+    @FXML
+    private TableColumn<OfficeHours, String> semesterColumn;
+    @FXML
+    private TableColumn<OfficeHours, String> daysColumn;
+
+    public void initialize() {
+        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
+        daysColumn.setCellValueFactory(new PropertyValueFactory<>("days"));
+        List<OfficeHours> officeHoursList = getOfficeHours();
+        ObservableList<OfficeHours> data = FXCollections.observableArrayList(officeHoursList);
+        officeHoursTable.setItems(data);
+    }
+
+    @FXML
+    private void handleOkButton(ActionEvent event) {
+        PageNavigator.navigateTo("Home"); // actual Home route
+    }
+
+    private List<OfficeHours> getOfficeHours() {
+        //  DB logic
+        return DbService.getOfficeHours();
+    }
+
+}

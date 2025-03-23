@@ -5,12 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import s25.cs151.application.models.OfficeHours;
 import s25.cs151.application.services.DbService;
-import s25.cs151.application.services.OfficeHoursService;
+
 import s25.cs151.application.services.PageNavigator;
 
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Controller for the Define Semester's Office Hours page
@@ -18,7 +20,8 @@ import java.util.List;
  * @author Team 2
  */
 public class OfficeHoursController {
-    
+
+
     @FXML
     private ComboBox<String> semesterComboBox;
     
@@ -31,7 +34,7 @@ public class OfficeHoursController {
     
     @FXML
     private Button submitButton, cancelButton;
-    
+
     @FXML
     private Label errorMessageLabel;
 
@@ -44,9 +47,10 @@ public class OfficeHoursController {
     public void initialize() {
         // Setup the semester combo box with required options
         semesterComboBox.getItems().addAll("Spring", "Summer", "Fall", "Winter");
-        
+        semesterComboBox.setValue("Spring");
         // Clear any error messages on load
         errorMessageLabel.setText("");
+
     }
     
     /**
@@ -62,7 +66,7 @@ public class OfficeHoursController {
             // Create the office hours object from form data
             OfficeHours officeHours = createOfficeHoursObject();
 
-            boolean saved = false;
+            boolean saved;
 
             try {
                 saved = DbService.saveOfficeHours(officeHours); // Assume this method returns a boolean
@@ -77,14 +81,28 @@ public class OfficeHoursController {
             }
 
             if (saved) {
-                showAlert("Success", "Office hours defined successfully.");
-                PageNavigator.navigateTo("Home"); // Navigate only on success
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                confirm.setTitle("Success");
+                confirm.setHeaderText("Office hours successfully defined.");
+                confirm.setContentText("Do you want to view all saved office hours now?");
+
+                Optional<ButtonType> result = confirm.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    // User wants to view the table
+                  PageNavigator.navigateTo("TableView");
+                } else {
+                    // User clicked Cancel, navigate to Home
+                    PageNavigator.navigateTo("Home");
+                }
             } else {
                 errorMessageLabel.setText("Error saving office hours. Please try again.");
             }
         }
     }
-    
+
+
+
+
     /**
      * Handler for the cancel button
      */
@@ -144,13 +162,14 @@ public class OfficeHoursController {
     private OfficeHours createOfficeHoursObject() {
         String semester = semesterComboBox.getValue();
         int year = Integer.parseInt(yearTextField.getText().trim());
-        
+
+
         List<String> days = new ArrayList<>();
-        if (mondayCheckBox.isSelected()) days.add("M");
-        if (tuesdayCheckBox.isSelected()) days.add("T");
-        if (wednesdayCheckBox.isSelected()) days.add("W");
-        if (thursdayCheckBox.isSelected()) days.add("Th");
-        if (fridayCheckBox.isSelected()) days.add("F");
+        if (mondayCheckBox.isSelected()) days.add("Mon");
+        if (tuesdayCheckBox.isSelected()) days.add("Tues");
+        if (wednesdayCheckBox.isSelected()) days.add("Wed");
+        if (thursdayCheckBox.isSelected()) days.add("Thurs");
+        if (fridayCheckBox.isSelected()) days.add("Fri");
         
         return new OfficeHours(semester, year, days);
     }

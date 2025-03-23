@@ -2,7 +2,7 @@
 # Version: 0.2
 
 # who did what:
-1. Sneha - controllers, fxml files, Main, PageNavigator
+1. Sneha - controllers, fxml files, Main, PageNavigator, database setup
 2. Andrew - Main, PageNavigator
 3. Meera - DefineSemesterOfficeHours
 4. Rehan - Home
