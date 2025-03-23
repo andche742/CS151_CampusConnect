@@ -2,6 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
+    <!-- Defines the model version for Maven POM -->
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>s25.cs151.application</groupId>
@@ -16,15 +18,18 @@
 
     <dependencies>
         <dependency>
+            <!-- Group ID, Artifact ID, and version defining the project coordinates -->
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>24</version>
         </dependency>
+         <!-- JavaFX FXML dependency for loading FXML files -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>24</version>
         </dependency>
+         <!-- FormsFX library for creating form-based UI components -->
         <dependency>
             <groupId>com.dlsc.formsfx</groupId>
             <artifactId>formsfx-core</artifactId>
@@ -36,6 +41,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- JUnit dependencies for unit testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -55,9 +61,10 @@
             <version>3.46.0.0</version>
         </dependency>
     </dependencies>
-
+         
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin for setting Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -67,6 +74,7 @@
                     <target>23</target>
                 </configuration>
             </plugin>
+         <!-- JavaFX Maven Plugin for running JavaFX applications -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>

@@ -4,7 +4,7 @@
 # who did what:
 1. Sneha - controllers, fxml files, Main, PageNavigator, database setup
 2. Andrew - Main, PageNavigator
-3. Meera - DefineSemesterOfficeHours
+3. Meera - DefineSemesterOfficeHours, Testing, Refining
 4. Rehan - Home
 
 
