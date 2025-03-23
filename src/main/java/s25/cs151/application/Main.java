@@ -1,11 +1,8 @@
 package s25.cs151.application;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import s25.cs151.application.models.OfficeHours;
 import s25.cs151.application.services.PageNavigator;
 import s25.cs151.application.services.DbService;
-
-import java.util.List;
 
 public class Main extends Application {
     @Override

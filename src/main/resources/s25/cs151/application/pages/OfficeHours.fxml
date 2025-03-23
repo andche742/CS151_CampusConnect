@@ -10,7 +10,7 @@
 <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;"
       xmlns="http://javafx.com/javafx/23.0.2"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="s25.cs151.application.controllers.TableViewController">
+      fx:controller="s25.cs151.application.controllers.OfficeHoursController">
 
 <!-- Header -->
 <Label text="📋 Semester Office Hours"
@@ -25,9 +25,16 @@
     </columns>
 </TableView>
 
-<!-- OK Button -->
-<Button fx:id="okButton"
-        text="OK"
-        onAction="#handleOkButton"
+<HBox alignment="CENTER" spacing="60">
+<!-- New Office Hours Button-->
+<Button fx:id="defineSemesterItem" text="Define New Office Hour"
+        onAction="#goToDefineSemesterOfficeHours"
         style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
+        
+<!-- Home Button -->
+<Button fx:id="homeButton"
+        text="Home"
+        onAction="#handleHomeButton"
+        style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
+</HBox>
 </VBox>

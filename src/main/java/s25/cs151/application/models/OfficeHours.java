@@ -8,6 +8,7 @@ public class OfficeHours {
     private String semester;
     private int year;
     private List<String> days;
+    private String daysAsString;
 
     public String getSemester() {
         return semester;
@@ -29,6 +30,14 @@ public class OfficeHours {
         return days;
     }
 
+    public String getDaysAsString() {
+        String daysAsString = "";
+        for (String day : days) {
+            daysAsString += day + ", ";
+        }
+        return daysAsString.substring(0, daysAsString.length() - 2);
+    }
+
     public void setDays(List<String> days) {
         this.days = days;
     }
@@ -43,6 +52,7 @@ public class OfficeHours {
         this.semester = semester;
         this.year = year;
         this.days = days;
+        this.daysAsString = getDaysAsString();
     }
 
 

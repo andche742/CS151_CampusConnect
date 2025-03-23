@@ -30,7 +30,7 @@
 
     <!-- Horizontally Centered Buttons -->
     <HBox alignment="CENTER" spacing="60">
-        <MenuButton fx:id="officeHoursMenuButton"
+        <!-- <MenuButton fx:id="officeHoursMenuButton"
                     text="⏰ Office Hours"
                     style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;">
             <items>
@@ -38,8 +38,11 @@
                           onAction="#goToDefineSemesterOfficeHours" />
                 <MenuItem fx:id="viewTableItem" text="View All Office Hours" onAction="#goToTable" />
             </items>
-        </MenuButton>
+        </MenuButton> -->
 
+        <Button fx:id="officeHoursButton" onAction="#goToOfficeHours"
+                text="⏰ Office Hours"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
 
         <Button fx:id="timeSlotsButton" onAction="#placeHolder"
                 text="📅 Time Slots"

@@ -8,12 +8,8 @@ public class HomeController {
 
     public MenuButton officeHoursMenuButton;
 
-    public void goToDefineSemesterOfficeHours() {
-        PageNavigator.navigateTo("DefineSemesterOfficeHours");
-    }
-
-    public void goToTable() {
-        PageNavigator.navigateTo("TableView");
+    public void goToOfficeHours() {
+        PageNavigator.navigateTo("OfficeHours");
     }
 
     public void placeHolder(ActionEvent actionEvent) {

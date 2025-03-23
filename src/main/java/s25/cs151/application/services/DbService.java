@@ -59,10 +59,10 @@ public class DbService {
                      ORDER BY
                     year DESC,
                     CASE semester
-                            WHEN 'Winter' THEN 4
-                            WHEN 'Fall' THEN 3
-                            WHEN 'Summer' THEN 2
-                            WHEN 'Spring' THEN 1
+                            WHEN 'Summer' THEN 4
+                            WHEN 'Spring' THEN 3
+                            WHEN 'Fall' THEN 2
+                            WHEN 'Winter' THEN 1
                             ELSE 0
                 END DESC
                 """;
