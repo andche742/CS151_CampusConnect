@@ -88,7 +88,7 @@ public class NewOfficeHoursController {
                 Optional<ButtonType> result = confirm.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     // User wants to view the table
-                  PageNavigator.navigateTo("TableView");
+                  PageNavigator.navigateTo("OfficeHours");
                 } else {
                     // User clicked Cancel, navigate to Home
                     PageNavigator.navigateTo("Home");
@@ -132,7 +132,7 @@ public class NewOfficeHoursController {
         
         try {
             int year = Integer.parseInt(yearText);
-            if (year < 2000 || year > 3000) {
+            if (year < 1000 || year > 9999) {
                 errorMessageLabel.setText("Please enter a valid year");
                 return false;
             }
