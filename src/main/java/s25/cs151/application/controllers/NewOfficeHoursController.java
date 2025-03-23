@@ -88,7 +88,7 @@ public class NewOfficeHoursController {
                 Optional<ButtonType> result = confirm.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     // User wants to view the table
-                  PageNavigator.navigateTo("TableView");
+                  PageNavigator.navigateTo("OfficeHours");
                 } else {
                     // User clicked Cancel, navigate to Home
                     PageNavigator.navigateTo("Home");
@@ -98,9 +98,6 @@ public class NewOfficeHoursController {
             }
         }
     }
-
-
-
 
     /**
      * Handler for the cancel button
