@@ -10,8 +10,6 @@ import java.util.List;
 
 public class DbService {
 
-
-
     public static void initializeOfficeHoursTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS office_hours (
@@ -81,21 +79,6 @@ public class DbService {
             e.printStackTrace();
         }
         return list;
-    }
-
-
-    public static void dropOfficeHoursTable() {
-        String sql = "DROP TABLE IF EXISTS office_hours";
-
-        try (
-                Connection conn = ConnectDB.getConnection();
-                Statement stmt = conn.createStatement()
-        ) {
-            stmt.executeUpdate(sql);
-            System.out.println("🗑️ Office Hours table dropped.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 

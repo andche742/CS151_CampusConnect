@@ -99,9 +99,6 @@ public class NewOfficeHoursController {
         }
     }
 
-
-
-
     /**
      * Handler for the cancel button
      */
