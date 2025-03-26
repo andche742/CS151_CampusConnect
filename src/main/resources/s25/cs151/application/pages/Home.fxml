@@ -48,7 +48,7 @@
                 text="📅 Time Slots"
                 style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
 
-        <Button fx:id="coursesButton" onAction="#placeHolder"
+        <Button fx:id="coursesButton" onAction="#goToCourses"
                 text="📚 Courses"
                 style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
 

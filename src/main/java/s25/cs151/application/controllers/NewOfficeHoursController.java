@@ -49,7 +49,8 @@ public class NewOfficeHoursController {
         semesterComboBox.setValue("Spring");
         // Clear any error messages on load
         errorMessageLabel.setText("");
-
+        // init the table for db
+        DbService.initializeOfficeHoursTable();
     }
     
     /**
