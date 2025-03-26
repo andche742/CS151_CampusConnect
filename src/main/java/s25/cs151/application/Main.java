@@ -7,8 +7,6 @@ import s25.cs151.application.services.DbService;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        // init the table for db
-        DbService.initializeOfficeHoursTable();
 
         // load and show the UI
         PageNavigator.setStage(primaryStage);
