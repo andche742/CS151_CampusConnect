@@ -1,10 +1,10 @@
 # Name of application: Campus Connect
-# Version: 0.4
+# Version: 0.5
 
 # who did what:
-1. Sneha - controllers, fxml files, Main, PageNavigator, database setup, table view
-2. Andrew - controllers, fxml, table view, main
-3. Meera - DefineSemesterOfficeHours, Testing, Refining
+1. Sneha - 
+2. Andrew - time slots page, time slots form, db logic
+3. Meera - 
 4. Rehan - 
 
 
