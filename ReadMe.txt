@@ -5,7 +5,7 @@
 1. Sneha - course controller + db logic + DAO structuring
 2. Andrew - time slots page + fxml form + db logic
 3. Meera - course fxml page + controller
-4. Rehan - 
+4. Rehaan - Review and test files 
 
 
 # Any other instruction that users need to know:
