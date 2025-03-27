@@ -6,15 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import s25.cs151.application.DAO.CoursesDAO;
-import s25.cs151.application.DAO.OfficeHoursDAO;
 import s25.cs151.application.models.Courses;
-import s25.cs151.application.models.ConnectDB;
-import s25.cs151.application.models.TimeSlots;
 import s25.cs151.application.services.PageNavigator;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -77,7 +71,7 @@ public class CoursesController {
         
         List<Courses> coursesList = CoursesDAO.getCourseList();
         ObservableList<Courses> data = FXCollections.observableArrayList(coursesList);
-        
+        coursesTableView.setItems(data);
         // Sort the table by course code in descending order
         courseCodeColumn.setSortType(TableColumn.SortType.DESCENDING);
         coursesTableView.getSortOrder().add(courseCodeColumn);
@@ -91,6 +85,8 @@ public class CoursesController {
         String sectionNumber = sectionNumberField.getText().trim();
         return new Courses(courseCode, courseName, sectionNumber);
     }
+
+
     /**
      * Handle adding a new course.
      * Validates input and adds the course to the database.
@@ -136,21 +132,7 @@ public class CoursesController {
             errorMessageLabel.setText("Error courses. Please try again.");
         }
     }
-    
 
-    
-    /**
-     * Handle clearing the form.
-     * Clears all text fields.
-     */
-    @FXML
-    private void handleClearForm() {
-        courseCodeField.clear();
-        courseNameField.clear();
-        sectionNumberField.clear();
-        courseCodeField.requestFocus();
-    }
-    
 
     /**
      * Handle returning to the home page.

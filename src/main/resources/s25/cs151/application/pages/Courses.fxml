@@ -36,7 +36,6 @@
 
             <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <Button fx:id="addButton" onAction="#handleAddCourse" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Add Course" />
-                <Button fx:id="clearButton" onAction="#handleClearForm" text="Clear" />
             </HBox>
 
             <columnConstraints>
