@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="s25.cs151.application.controllers.CoursesController"
-            prefHeight="400.0" prefWidth="600.0">
-
+            prefHeight="600.0" prefWidth="800.0">
+    <VBox spacing="20" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" 
+          AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+        <!-- Header -->
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="10" />
+            </padding>
+            <Label text="Define Courses" style="-fx-font-weight: bold;">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </HBox>
+        
+        <!-- Input Form -->
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets left="50" right="50" />
+            </padding>
+            
+            <Label text="Course Code:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="courseCodeField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="e.g., CS151" />
+            
+            <Label text="Course Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="courseNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="e.g., Object-Oriented Design" />
+            
+            <Label text="Section Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="sectionNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="e.g., 01" />
+            
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button fx:id="addButton" text="Add Course" onAction="#handleAddCourse" 
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white;" />
+                <Button fx:id="clearButton" text="Clear" onAction="#handleClearForm" />
+            </HBox>
+            
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="350" />
+            </columnConstraints>
+        </GridPane>
+        
+        <!-- Table View -->
+        <VBox VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets left="50" right="50" bottom="20" />
+            </padding>
+            <Label text="All Courses (sorted by Course Code):" style="-fx-font-weight: bold;" />
+            <TableView fx:id="coursesTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="courseCodeColumn" text="Course Code" prefWidth="150" />
+                    <TableColumn fx:id="courseNameColumn" text="Course Name" prefWidth="350" />
+                    <TableColumn fx:id="sectionNumberColumn" text="Section Number" prefWidth="150" />
+                </columns>
+            </TableView>
+            
+            <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+                <Button fx:id="deleteButton" text="Delete Selected" onAction="#handleDeleteCourse"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+                <Button fx:id="returnButton" text="Return to Home" onAction="#handleReturnHome" />
+            </HBox>
+        </VBox>
+    </VBox>
 </AnchorPane>
