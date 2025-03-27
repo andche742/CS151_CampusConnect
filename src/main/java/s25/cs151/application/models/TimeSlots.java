@@ -20,7 +20,7 @@ public class TimeSlots {
     }
 
     public int getFromMinute() {
-        return fromTime.getHour();
+        return fromTime.getMinute();
     }
 
     public int getToHour() {
@@ -28,7 +28,7 @@ public class TimeSlots {
     }
 
     public int getToMinute() {
-        return toTime.getHour();
+        return toTime.getMinute();
     }
     
     @Override

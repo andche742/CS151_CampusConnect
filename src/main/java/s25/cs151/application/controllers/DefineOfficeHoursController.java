@@ -3,8 +3,8 @@ package s25.cs151.application.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import s25.cs151.application.DAO.OfficeHoursDAO;
 import s25.cs151.application.models.OfficeHours;
-import s25.cs151.application.services.DbService;
 
 import s25.cs151.application.services.PageNavigator;
 
@@ -18,7 +18,7 @@ import java.util.Optional;
  * 
  * @author Team 2
  */
-public class NewOfficeHoursController {
+public class DefineOfficeHoursController {
 
 
     @FXML
@@ -44,13 +44,12 @@ public class NewOfficeHoursController {
      */
     @FXML
     public void initialize() {
-        // Setup the semester combo box with required options
+        // Set up the semester combo box with required options
         semesterComboBox.getItems().addAll("Spring", "Summer", "Fall", "Winter");
         semesterComboBox.setValue("Spring");
         // Clear any error messages on load
         errorMessageLabel.setText("");
-        // // init the table for db
-        // DbService.initializeOfficeHoursTable();
+
     }
     
     /**
@@ -69,7 +68,7 @@ public class NewOfficeHoursController {
             boolean saved;
 
             try {
-                saved = DbService.saveOfficeHours(officeHours); // Assume this method returns a boolean
+                saved = OfficeHoursDAO.saveOfficeHours(officeHours); // Assume this method returns a boolean
             } catch (SQLException e) {
                 if (e.getMessage().contains("UNIQUE")) {
                     showAlert("Duplicate Entry", "This office hour entry already exists.");
@@ -159,7 +158,6 @@ public class NewOfficeHoursController {
     private OfficeHours createOfficeHoursObject() {
         String semester = semesterComboBox.getValue();
         int year = Integer.parseInt(yearTextField.getText().trim());
-
 
         List<String> days = new ArrayList<>();
         if (mondayCheckBox.isSelected()) days.add("Mon");

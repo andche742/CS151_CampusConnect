@@ -1,17 +1,21 @@
-package s25.cs151.application.services;
+package s25.cs151.application.DAO;
 
 import s25.cs151.application.models.ConnectDB;
 import s25.cs151.application.models.OfficeHours;
-import s25.cs151.application.models.TimeSlots;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DbService {
+
+public class OfficeHoursDAO {
 
     // OFFICE HOUR METHODS
+
+    /**
+     * Initializes the office_hours table.
+     */
     public static void initializeOfficeHoursTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS office_hours (
@@ -33,7 +37,13 @@ public class DbService {
         }
     }
 
-    // insert office hours
+    /**
+     * Creates a new OfficeHours record.
+     *
+     * @param officeHours The OfficeHours object to insert.
+     * @return true if the insert was successful; otherwise, false.
+     * @throws SQLException if a database error occurs.
+     */
     public static boolean saveOfficeHours(OfficeHours officeHours) throws SQLException {
         String sql = "INSERT INTO office_hours (semester, year, days) VALUES (?, ?, ?)";
 
@@ -52,6 +62,11 @@ public class DbService {
         }
     }
 
+
+    /**
+     * Retrieves all OfficeHours records
+     * @return A List of OfficeHours objects.
+     */
     public static List<OfficeHours> getOfficeHours() {
         List<OfficeHours> list = new ArrayList<>();
         String sql = """
@@ -83,76 +98,29 @@ public class DbService {
         return list;
     }
 
-    // TIME SLOT METHODS
-    public static void initializeTimeSlotsTable() {
-        String sql = """
-        CREATE TABLE IF NOT EXISTS time_slots (
-            fromTime TEXT NOT NULL,
-            toTime TEXT NOT NULL,
-            fromHour INT NOT NULL,
-            fromMinute INT NOT NULL,
-            toHour INT NOT NULL,
-            toMinute INT NOT NULL
-        );
-        """;
-
-        try (
-                Connection conn = ConnectDB.getConnection();         // fresh connection
-                Statement stmt = conn.createStatement()
-        ) {
-            stmt.execute(sql);
-            System.out.println("Time Slots table initialized.");
-        } catch (SQLException e) {
-            System.err.println("Failed to initialize Time Slots table: " + e.getMessage());
-            e.printStackTrace();
-        }
+    /**
+     * Updates an existing OfficeHours record.
+     *
+     * @param officeHours The OfficeHours object with updated data.
+     * @return true if the update was successful; otherwise, false.
+     * @throws SQLException if a database error occurs.
+     */
+    public static boolean updateOfficeHours(OfficeHours officeHours) throws SQLException {
+        // TODO: Implement update operation
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    // insert office hours
-    public static boolean saveTimeSlots(TimeSlots timeSlots) throws SQLException {
-        String sql = "INSERT INTO time_slots (fromTime, toTime, fromHour, fromMinute, toHour, toMinute) VALUES (?, ?, ?, ?, ?, ?)";
-
-        try (
-                Connection conn = ConnectDB.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)
-        ) {
-            pstmt.setString(1, timeSlots.getFromTime());
-            pstmt.setString(2, timeSlots.getToTime());
-            pstmt.setInt(3, timeSlots.getFromHour());
-            pstmt.setInt(4, timeSlots.getFromMinute());
-            pstmt.setInt(5, timeSlots.getToHour());
-            pstmt.setInt(6, timeSlots.getToMinute());
-
-            pstmt.executeUpdate();
-            System.out.println("Time slot inserted.");
-            return true;
-        } catch (SQLException e) {
-            throw e;
-        }
+    /**
+     * Deletes an OfficeHours record.
+     *
+     * @param officeHours The OfficeHours object to delete.
+     * @return true if the deletion was successful; otherwise, false.
+     * @throws SQLException if a database error occurs.
+     */
+    public static boolean deleteOfficeHours(OfficeHours officeHours) throws SQLException {
+        // TODO: Implement delete operation
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public static List<TimeSlots> getTimeSlots() {
-        List<TimeSlots> list = new ArrayList<>();
-        String sql = """
-                    SELECT * FROM time_slots
-                     ORDER BY
-                    fromTime ASC
-                """;
-        try (
-                Connection conn = ConnectDB.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet resultSet = stmt.executeQuery()
-        ) {
-            while (resultSet.next()) {
-                int fromHour = resultSet.getInt("fromHour");
-                int fromMinute = resultSet.getInt("fromMinute");
-                int toHour = resultSet.getInt("toHour");
-                int toMinute = resultSet.getInt("toMinute");
-                list.add(new TimeSlots(fromHour, fromMinute, toHour, toMinute));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+
 }

@@ -34,7 +34,8 @@ public class PageNavigator {
         return switch (page) {
             case "Home" -> "Campus Connect";
             case "DefineSemesterOfficeHours" -> "Define Semester's Office Hours";
-            case "TableView" -> "Office Hours Table";
+            case "OfficeHours" -> "Office Hours Table";
+            case "Courses" -> "Define Courses";
             default -> "Application";
         };
     }
