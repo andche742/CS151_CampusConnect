@@ -1,6 +1,7 @@
 package s25.cs151.application;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import s25.cs151.application.DAO.CoursesDAO;
 import s25.cs151.application.DAO.TimeSlotsDAO;
 import s25.cs151.application.services.PageNavigator;
 import s25.cs151.application.DAO.OfficeHoursDAO;
@@ -18,6 +19,7 @@ public class Main extends Application {
         // init the table for db
         OfficeHoursDAO.initializeOfficeHoursTable();
         TimeSlotsDAO.initializeTimeSlotsTable();
+        CoursesDAO.initializeCoursesTable();
 
         launch(args);
     }

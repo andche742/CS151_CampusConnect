@@ -18,7 +18,7 @@ import java.util.Optional;
  * 
  * @author Team 2
  */
-public class NewOfficeHoursController {
+public class DefineOfficeHoursController {
 
 
     @FXML
@@ -44,13 +44,12 @@ public class NewOfficeHoursController {
      */
     @FXML
     public void initialize() {
-        // Setup the semester combo box with required options
+        // Set up the semester combo box with required options
         semesterComboBox.getItems().addAll("Spring", "Summer", "Fall", "Winter");
         semesterComboBox.setValue("Spring");
         // Clear any error messages on load
         errorMessageLabel.setText("");
-        // // init the table for db
-        // DbService.initializeOfficeHoursTable();
+
     }
     
     /**

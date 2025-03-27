@@ -16,7 +16,7 @@ import java.util.Optional;
  * 
  * @author Team 2
  */
-public class NewTimeSlotsController {
+public class DefineTimeSlotsController {
 
 
     @FXML
