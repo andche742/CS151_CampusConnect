@@ -159,7 +159,6 @@ public class DefineOfficeHoursController {
         String semester = semesterComboBox.getValue();
         int year = Integer.parseInt(yearTextField.getText().trim());
 
-
         List<String> days = new ArrayList<>();
         if (mondayCheckBox.isSelected()) days.add("Mon");
         if (tuesdayCheckBox.isSelected()) days.add("Tues");
