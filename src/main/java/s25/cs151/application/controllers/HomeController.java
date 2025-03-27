@@ -1,14 +1,14 @@
 package s25.cs151.application.controllers;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
 import s25.cs151.application.services.PageNavigator;
 
 
 public class HomeController {
 
 
-
+    public void goToTimeSlots() {
+        PageNavigator.navigateTo("TimeSlots");
+    }
 
     public void goToOfficeHours() {
         PageNavigator.navigateTo("OfficeHours");

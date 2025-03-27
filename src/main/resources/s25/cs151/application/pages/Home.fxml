@@ -44,7 +44,7 @@
                 text="⏰ Office Hours"
                 style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
 
-        <Button fx:id="timeSlotsButton" onAction="#placeHolder"
+        <Button fx:id="timeSlotsButton" onAction="#goToTimeSlots"
                 text="📅 Time Slots"
                 style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
 

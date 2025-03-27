@@ -14,6 +14,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        // init the table for db
+        DbService.initializeOfficeHoursTable();
+        DbService.initializeTimeSlotsTable();
         launch(args);
     }
 }
