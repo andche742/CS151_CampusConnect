@@ -258,7 +258,7 @@ public class CoursesController {
     @FXML
     private void handleReturnHome() {
         try {
-            PageNavigator.loadPage("Home.fxml");
+            PageNavigator.navigateTo("Home.fxml");
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Navigation Error", 
                      "Failed to return to home page", e.getMessage());

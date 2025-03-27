@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import s25.cs151.application.DAO.OfficeHoursDAO;
 import s25.cs151.application.models.OfficeHours;
-import s25.cs151.application.services.DbService;
 import s25.cs151.application.services.PageNavigator;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class OfficeHoursController {
 
     private List<OfficeHours> getOfficeHours() {
         //  DB logic
-        return DbService.getOfficeHours();
+        return OfficeHoursDAO.getOfficeHours();
     }
 
 }

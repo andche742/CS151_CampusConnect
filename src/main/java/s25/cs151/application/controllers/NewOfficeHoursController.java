@@ -3,8 +3,8 @@ package s25.cs151.application.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import s25.cs151.application.DAO.OfficeHoursDAO;
 import s25.cs151.application.models.OfficeHours;
-import s25.cs151.application.services.DbService;
 
 import s25.cs151.application.services.PageNavigator;
 
@@ -69,7 +69,7 @@ public class NewOfficeHoursController {
             boolean saved;
 
             try {
-                saved = DbService.saveOfficeHours(officeHours); // Assume this method returns a boolean
+                saved = OfficeHoursDAO.saveOfficeHours(officeHours); // Assume this method returns a boolean
             } catch (SQLException e) {
                 if (e.getMessage().contains("UNIQUE")) {
                     showAlert("Duplicate Entry", "This office hour entry already exists.");

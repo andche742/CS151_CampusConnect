@@ -3,8 +3,8 @@ package s25.cs151.application.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import s25.cs151.application.DAO.TimeSlotsDAO;
 import s25.cs151.application.models.TimeSlots;
-import s25.cs151.application.services.DbService;
 
 import s25.cs151.application.services.PageNavigator;
 
@@ -71,7 +71,7 @@ public class NewTimeSlotsController {
             boolean saved;
 
             try {
-                saved = DbService.saveTimeSlots(timeSlots); // Assume this method returns a boolean
+                saved = TimeSlotsDAO.saveTimeSlots(timeSlots); //this method returns a boolean
             } catch (SQLException e) {
                 showAlert("Database Error", "Something went wrong:\n" + e.getMessage());
                 e.printStackTrace();
