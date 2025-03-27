@@ -4,7 +4,7 @@
 # who did what:
 1. Sneha - 
 2. Andrew - time slots page, time slots form, db logic
-3. Meera - 
+3. Meera - course page
 4. Rehan - 
 
 
