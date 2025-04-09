@@ -3,11 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" spacing="10.0"
-      style="-fx-background-color: #1E88A0; -fx-padding: 20;"
-      xmlns="http://javafx.com/javafx/23.0.2"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="s25.cs151.application.controllers.HomeController">
+<VBox alignment="TOP_CENTER" prefHeight="430.0" prefWidth="654.0" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controllers.HomeController">
 
     <!-- Top Right Icons -->
     <HBox alignment="TOP_RIGHT" spacing="1">
@@ -21,40 +17,28 @@
     <!-- Welcome Section -->
     <VBox alignment="CENTER" spacing="3">
         <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="Welcome!" />
-        <Label style="-fx-font-size: 12px; -fx-text-fill: white;"
-               text="Helping you stay connected, one office hour at a time." />
+        <Label style="-fx-font-size: 12px; -fx-text-fill: white;" text="Helping you stay connected, one office hour at a time." />
     </VBox>
 
-    <!-- Spacer to push buttons to vertical center -->
+    <!-- Spacer to push the buttons downward slightly -->
     <Pane VBox.vgrow="ALWAYS" />
+     <Button fx:id="officeHoursScheduleButton" onAction="#goToDefineAppointments"
+             style="-fx-background-color: white; -fx-text-fill: #1E88A0;
+             -fx-font-size: 16px; -fx-font-weight: bold;
+              -fx-background-radius: 8; -fx-padding: 10 50;" text="Office Hours Schedule" />
+
+    <!-- Centered Office Hours Schedule Button placed just above the main buttons -->
+    <HBox alignment="CENTER" />
 
     <!-- Horizontally Centered Buttons -->
     <HBox alignment="CENTER" spacing="60">
-        <!-- <MenuButton fx:id="officeHoursMenuButton"
-                    text="⏰ Office Hours"
-                    style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;">
-            <items>
-                <MenuItem fx:id="defineSemesterItem" text="Define Semester Office Hours"
-                          onAction="#goToDefineSemesterOfficeHours" />
-                <MenuItem fx:id="viewTableItem" text="View All Office Hours" onAction="#goToTable" />
-            </items>
-        </MenuButton> -->
+        <Button fx:id="officeHoursButton" onAction="#goToOfficeHours" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="⏰ Office Hours" />
 
-        <Button fx:id="officeHoursButton" onAction="#goToOfficeHours"
-                text="⏰ Office Hours"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
+        <Button fx:id="timeSlotsButton" onAction="#goToTimeSlots" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📅 Time Slots" />
 
-        <Button fx:id="timeSlotsButton" onAction="#goToTimeSlots"
-                text="📅 Time Slots"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
+        <Button fx:id="coursesButton" onAction="#goToCourses" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📚 Courses" />
 
-        <Button fx:id="coursesButton" onAction="#goToCourses"
-                text="📚 Courses"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
-
-        <Button fx:id="searchButton" onAction="#placeHolder"
-                text="🔍 Search"
-                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
+        <Button fx:id="searchButton" onAction="#placeHolder" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="🔍 Search" />
     </HBox>
 
     <!-- Spacer to balance bottom -->

@@ -19,7 +19,9 @@ public class HomeController {
     }
 
 
-    public void placeHolder(ActionEvent actionEvent) {
+    public void placeHolder() {
     }
+
+    public void goToDefineAppointments() { PageNavigator.navigateTo("DefineAppointments"); }
 }
 
