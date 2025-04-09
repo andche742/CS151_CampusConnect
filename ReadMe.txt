@@ -1,11 +1,11 @@
 # Name of application: Campus Connect
-# Version: 0.5
+# Version: 0.6
 
 # who did what:
-1. Sneha - course controller + db logic + DAO structuring
-2. Andrew - time slots page + fxml form + db logic
-3. Meera - course fxml page + controller
-4. Rehaan - Review and test files 
+1. Sneha - 
+2. Andrew - 
+3. Meera - 
+4. Rehaan - 
 
 
 # Any other instruction that users need to know:

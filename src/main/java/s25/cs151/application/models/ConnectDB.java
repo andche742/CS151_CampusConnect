@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectDB {
 
-    private static final String DB_FILE = "CampusConnect.db"; // The actual DB file
+    private static final String DB_FILE = "data/CampusConnect.db"; // The actual DB file
     private static final String DB_URL = "jdbc:sqlite:" + DB_FILE;
 
 
