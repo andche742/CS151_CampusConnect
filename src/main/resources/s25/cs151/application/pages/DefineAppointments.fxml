@@ -33,12 +33,13 @@
     <TextField fx:id="commentTextField" promptText="Additional comment (optional)" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
     <!-- Error Message Label -->
-    <Label fx:id="errorMessageLabel" style="-fx-text-fill: red; -fx-font-size: 12;" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+    <Label fx:id="errorMessageLabel" style="-fx-text-fill: red; -fx-font-size: 12;"
+           GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
 
     <!-- Buttons -->
     <HBox spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="11">
-        <Button fx:id="cancelButton" onAction="#handleCancel" style="-fx-background-color: lightgray;" text="Cancel" />
-        <Button fx:id="submitButton" onAction="#handleSubmit" style="-fx-background-color: #3B8EEA; -fx-text-fill: white;" text="Submit" />
+        <Button onAction="#handleCancel" style="-fx-background-color: lightgray;" text="Cancel" />
+        <Button onAction="#handleSubmit" style="-fx-background-color: #3B8EEA; -fx-text-fill: white;" text="Submit" />
     </HBox>
    <columnConstraints>
       <ColumnConstraints />
