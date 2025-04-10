@@ -1,13 +1,9 @@
 package s25.cs151.application.models;
-
-import javafx.scene.control.DatePicker;
-
 import java.time.LocalDate;
-import java.util.List;
 
 public class Appointment {
 
-    private String appointmentId;
+
     private String StudentFullName;
     private LocalDate ScheduleDate;
     private TimeSlots TimeSlot;
@@ -17,7 +13,6 @@ public class Appointment {
 
 
     // getters
-    public String getAppointmentId() {return appointmentId;}
     public String getStudentFullName() {
         return StudentFullName;
     }

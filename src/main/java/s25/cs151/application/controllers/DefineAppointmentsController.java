@@ -68,8 +68,8 @@ public class DefineAppointmentsController {
         // get the variables
         String name = studentNameTextField.getText();
         LocalDate date = scheduleDatePicker.getValue();
-        TimeSlots timeSlot = (TimeSlots) timeSlotComboBox.getValue();
-        Courses course = (Courses) courseComboBox.getValue();
+        TimeSlots timeSlot = timeSlotComboBox.getValue();
+        Courses course = courseComboBox.getValue();
         String reason = reasonTextField.getText();
         String comment = commentTextField.getText();
 
