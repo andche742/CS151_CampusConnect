@@ -5,8 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1E88A0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controllers.CoursesController">
-    <VBox spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1E88A0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="s25.cs151.application.controllers.CoursesController">
+    <VBox spacing="20" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+
         <!-- Header -->
         <HBox alignment="CENTER">
             <padding>
@@ -26,16 +31,20 @@
             </padding>
 
             <Label text="Course Code:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="courseCodeField" promptText="e.g., CS151" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="courseCodeField" promptText="e.g., CS151"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
             <Label text="Course Name:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="courseNameField" promptText="e.g., Object-Oriented Design" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="courseNameField" promptText="e.g., Object-Oriented Design"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             <Label text="Section Number:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField fx:id="sectionNumberField" promptText="e.g., 01" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="sectionNumberField" promptText="e.g., 01"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                <Button fx:id="addButton" onAction="#handleAddCourse" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Add Course" />
+                <Button fx:id="addButton" onAction="#handleAddCourse"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Add Course" />
             </HBox>
 
             <columnConstraints>

@@ -2,7 +2,6 @@ package s25.cs151.application.DAO;
 
 import s25.cs151.application.models.ConnectDB;
 import s25.cs151.application.models.TimeSlots;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

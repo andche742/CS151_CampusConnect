@@ -1,6 +1,4 @@
 package s25.cs151.application.DAO;
-
-import javafx.scene.control.Alert;
 import s25.cs151.application.models.ConnectDB;
 import s25.cs151.application.models.Courses;
 
