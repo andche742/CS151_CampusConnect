@@ -18,7 +18,7 @@ public class AppointmentDAO {
     public static void initializeAppointmentsTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS appointments (
-            appointment_id INT NOT NULL PRIMARY KEY,
+            appointment_id INT PRIMARY KEY,
             student_name TEXT NOT NULL,
             date TEXT NOT NULL,
             course_id INT NOT NULL,
@@ -26,9 +26,8 @@ public class AppointmentDAO {
             reason TEXT,
             comment TEXT,
             FOREIGN KEY (course_id) REFERENCES courses(course_id),
-            FOREIGN KEY (timeslot_id) REFERENCES time_slots(time_slot_id)
+            FOREIGN KEY (time_slot_id) REFERENCES time_slots(time_slot_id)
 
-            )
         );
         """;
         try (
@@ -58,8 +57,8 @@ public class AppointmentDAO {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, appointment.getStudentFullName());
             stmt.setString(2, appointment.getScheduleDate().toString());
-            stmt.setInt(3, CoursesDAO.getCourseID(conn, appointment.getCourses().getCourseCode())); // figure this out
-            stmt.setInt(4, TimeSlotsDAO.getTimeSlotID(conn, appointment.getTimeSlots().getFromTime(), appointment.getTimeSlots().getToTime())); // same
+            stmt.setInt(3, CoursesDAO.getCourseID(conn, appointment.getCourses().getCourseCode()));
+            stmt.setInt(4, TimeSlotsDAO.getTimeSlotID(conn, appointment.getTimeSlots().getFromTime(), appointment.getTimeSlots().getToTime()));
             stmt.setString(5, appointment.getReason());
             stmt.setString(6, appointment.getComments());
 

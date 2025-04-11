@@ -18,12 +18,12 @@ public class TimeSlotsDAO {
         String sql = """
         CREATE TABLE IF NOT EXISTS time_slots (
             time_slot_id INT PRIMARY KEY,
-            fromTime TEXT NOT NULL,
-            toTime TEXT NOT NULL,
-            fromHour INT NOT NULL,
-            fromMinute INT NOT NULL,
-            toHour INT NOT NULL,
-            toMinute INT NOT NULL
+            from_time TEXT NOT NULL,
+            to_time TEXT NOT NULL,
+            from_hour INT NOT NULL,
+            from_minute INT NOT NULL,
+            to_hour INT NOT NULL,
+            to_minute INT NOT NULL
         );
         """;
 
@@ -47,7 +47,7 @@ public class TimeSlotsDAO {
      * @throws SQLException if a database error occurs.
      */
     public static boolean saveTimeSlots(TimeSlots timeSlots) throws SQLException {
-        String sql = "INSERT INTO time_slots (fromTime, toTime, fromHour, fromMinute, toHour, toMinute) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO time_slots (from_time, to_time, from_hour, from_minute, to_hour, to_minute) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (
                 Connection conn = ConnectDB.getConnection();
@@ -78,7 +78,7 @@ public class TimeSlotsDAO {
         String sql = """
                     SELECT * FROM time_slots
                      ORDER BY
-                    fromTime ASC
+                    from_time ASC
                 """;
         try (
                 Connection conn = ConnectDB.getConnection();
@@ -86,11 +86,9 @@ public class TimeSlotsDAO {
                 ResultSet resultSet = stmt.executeQuery()
         ) {
             while (resultSet.next()) {
-                int fromHour = resultSet.getInt("fromHour");
-                int fromMinute = resultSet.getInt("fromMinute");
-                int toHour = resultSet.getInt("toHour");
-                int toMinute = resultSet.getInt("toMinute");
-                list.add(new TimeSlots(fromHour, fromMinute, toHour, toMinute));
+                String fromTime = resultSet.getString("from_time");
+                String toTime = resultSet.getString("to_time");
+                list.add(new TimeSlots(LocalTime.parse(fromTime), LocalTime.parse(toTime)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -130,7 +128,7 @@ public class TimeSlotsDAO {
      * @throws SQLException if error occurs.
      */
     public static int getTimeSlotID(Connection conn, String fromTime, String toTime) throws SQLException {
-        String sql = "SELECT course_id FROM courses WHERE fromTime = ? AND toTime = ?";
+        String sql = "SELECT time_slot_id FROM time_slots WHERE from_time = ? AND to_time = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, fromTime);
@@ -153,8 +151,8 @@ public class TimeSlotsDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new TimeSlots(
-                        LocalTime.parse(rs.getString("fromTime")),
-                        LocalTime.parse(rs.getString("toTime")));
+                        LocalTime.parse(rs.getString("from_time")),
+                        LocalTime.parse(rs.getString("to_time")));
                 }
                 else {
                     System.out.println("time_slot_id: " + id + " not found");

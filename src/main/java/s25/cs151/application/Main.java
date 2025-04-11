@@ -1,6 +1,7 @@
 package s25.cs151.application;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import s25.cs151.application.DAO.AppointmentDAO;
 import s25.cs151.application.DAO.CoursesDAO;
 import s25.cs151.application.DAO.TimeSlotsDAO;
 import s25.cs151.application.services.PageNavigator;
@@ -20,6 +21,7 @@ public class Main extends Application {
         OfficeHoursDAO.initializeOfficeHoursTable();
         TimeSlotsDAO.initializeTimeSlotsTable();
         CoursesDAO.initializeCoursesTable();
+        AppointmentDAO.initializeAppointmentsTable();
 
         launch(args);
     }

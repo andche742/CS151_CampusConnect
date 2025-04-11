@@ -122,7 +122,7 @@ public class CoursesDAO {
      * @throws SQLException if error occurs.
      */
     public static int getCourseID(Connection conn, String courseCode) throws SQLException {
-        String sql = "SELECT course_id FROM courses HWERE course_code = ?";
+        String sql = "SELECT course_id FROM courses WHERE course_code = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, courseCode);
