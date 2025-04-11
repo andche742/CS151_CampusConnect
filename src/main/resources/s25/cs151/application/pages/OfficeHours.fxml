@@ -25,13 +25,12 @@
 
 <HBox alignment="CENTER" spacing="60">
 <!-- New Office Hours Button-->
-<Button fx:id="defineSemesterItem" text="Create New Office Hour"
+<Button text="Create New Office Hour"
         onAction="#goToDefineSemesterOfficeHours"
         style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
         
 <!-- Home Button -->
-<Button fx:id="homeButton"
-        text="Home"
+<Button text="Home"
         onAction="#handleHomeButton"
         style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
 </HBox>

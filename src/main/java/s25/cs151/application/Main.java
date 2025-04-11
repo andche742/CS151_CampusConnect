@@ -4,7 +4,6 @@ import javafx.stage.Stage;
 import s25.cs151.application.DAO.AppointmentDAO;
 import s25.cs151.application.DAO.CoursesDAO;
 import s25.cs151.application.DAO.TimeSlotsDAO;
-import s25.cs151.application.models.Appointment;
 import s25.cs151.application.services.PageNavigator;
 import s25.cs151.application.DAO.OfficeHoursDAO;
 

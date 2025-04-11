@@ -1,6 +1,4 @@
 package s25.cs151.application.models;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class OfficeHours {

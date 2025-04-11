@@ -39,7 +39,7 @@
     <HBox prefHeight="27.0" prefWidth="267.0" spacing="10" GridPane.columnSpan="2" GridPane.rowIndex="8">
         <Button onAction="#handleCancel" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: lightgray;" text="Cancel" />
         <Button onAction="#handleSubmit" style="-fx-background-color: #3B8EEA; -fx-text-fill: white;" text="Submit" />
-        <Button fx:id="viewAppointmentsButton" onAction="#handleViewAppointments" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 13px; -fx-padding: 5 10;" text="View Appointments" />
+        <Button onAction="#handleViewAppointments" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 13px; -fx-padding: 5 10;" text="View Appointments" />
     </HBox>
 
     <!-- View Appointments Button -->
