@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="10" style="-fx-background-color: #1E88A0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controllers.ScheduleController">
+
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15" />
+    </padding>
+
+    <!-- Title -->
+    <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text=" Appointments" />
+
+    <!-- Schedule Table -->
+    <TableView fx:id="scheduleTable" prefHeight="280" prefWidth="700">
+        <columns>
+            <TableColumn fx:id="studentFullNameColumn" prefWidth="130.0" text="Name" />
+            <TableColumn fx:id="scheduleDateColumn" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="timeSlotColumn" prefWidth="96.0" text="Time" />
+            <TableColumn fx:id="courseColumn" prefWidth="130.0" text="Course" />
+            <TableColumn fx:id="reasonColumn" prefWidth="112.0" text="Reason" />
+            <TableColumn fx:id="commentsColumn" prefWidth="146.0" text="Comments" />
+        </columns>
+    </TableView>
+
+    <!-- Buttons -->
+    <HBox alignment="CENTER" spacing="30">
+        <Button fx:id="backButton" onAction="#handleBack" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 13px; -fx-padding: 5 10;" text="Back" />
+    </HBox>
+
+</VBox>

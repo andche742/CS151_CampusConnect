@@ -42,11 +42,6 @@ public class OfficeHours {
         this.days = days;
     }
 
-    public OfficeHours() {
-        this.semester = "";
-        this.year = 2000;
-        this.days = new ArrayList<>();
-    }
 
     public OfficeHours(String semester, int year, List<String> days) {
         this.semester = semester;

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 10;"
+<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0;"
       xmlns="http://javafx.com/javafx/23.0.2"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="s25.cs151.application.controllers.OfficeHoursController">

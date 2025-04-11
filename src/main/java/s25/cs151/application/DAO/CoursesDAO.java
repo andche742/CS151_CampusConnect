@@ -117,7 +117,7 @@ public class CoursesDAO {
     /**
      * Returns course_id from courses table
      * 
-     * @param course_code Course code to search
+     * @param conn Course code to search
      * @return course_id as int
      * @throws SQLException if error occurs.
      */
@@ -137,7 +137,7 @@ public class CoursesDAO {
     }
 
     public static Courses getCourseByID(Connection conn, int id) throws SQLException {
-        String sql = "SELECT * FROM course WHERE course_id = ?";
+        String sql = "SELECT * FROM courses WHERE course_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);

@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Appointment {
 
-    
+    private int appointmentId;
     private String StudentFullName;
     private LocalDate ScheduleDate;
     private TimeSlots TimeSlot;
@@ -12,7 +12,8 @@ public class Appointment {
     private String Comments;
 
     
-    public Appointment(String name, LocalDate date, TimeSlots timeslot, Courses course, String reason, String comment) {
+    public Appointment(String name, LocalDate date, TimeSlots timeslot,
+                       Courses course, String reason, String comment) {
         setStudentFullName(name);
         setScheduleDate(date);
         setTimeSlots(timeslot);
@@ -33,7 +34,7 @@ public class Appointment {
     public Courses getCourses() {return Courses;}
     public String getReason() {return Reason;}
     public String getComments() {return Comments;}
-
+    public int getAppointmentId() {return appointmentId; }
     // setters
     public void setStudentFullName(String studentFullName) {
         StudentFullName = studentFullName;
@@ -43,6 +44,7 @@ public class Appointment {
     public void setCourses(Courses courses) { Courses = courses;}
     public void setReason(String reason) { Reason = reason;}
     public void setComments(String comments) { Comments = comments;}
+    public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId;}
 
 
 }

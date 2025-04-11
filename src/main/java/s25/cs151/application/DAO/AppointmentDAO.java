@@ -46,7 +46,7 @@ public class AppointmentDAO {
     /**
      * Inserts a new Appointment record into the appointments table.
      *
-     * @param course The Appointment object to insert.
+     * @param appointment The Appointment object to insert.
      * @return true if the appointment was inserted successfully.
      * @throws SQLException if a database error occurs.
      */
@@ -88,6 +88,7 @@ public class AppointmentDAO {
         ) {
             while (rs.next()) {
                 // Retrieve values from the result set for each column
+                int appointmentId = rs.getInt("appointment_id");
                 String name = rs.getString("student_name");
                 String dateStr = rs.getString("date");
                 int timeSlotID = rs.getInt("time_slot_id");
@@ -100,6 +101,7 @@ public class AppointmentDAO {
                 Courses course = CoursesDAO.getCourseByID(conn, courseID);
                 // Create a new Courses object and add it to the list
                 Appointment appt = new Appointment(name, date, timeSlot, course, reason, comment);
+                appt.setAppointmentId(appointmentId);
                 appointmentList.add(appt);
             }
         } catch (SQLException e) {
@@ -111,12 +113,20 @@ public class AppointmentDAO {
     /**
      * Deletes a Appointment record from the appointments table.
      *
-     * @param course The Appointment object to delete.
+     * @param appointment The Appointment object to delete.
      * @return true if the deletion was successful.
      * @throws SQLException if a database error occurs.
      */
     public static boolean deleteAppointment(Appointment appointment) throws SQLException {
-        // TODO: Implement delete operation for courses
-        throw new UnsupportedOperationException("Not implemented yet");
+        String sql = "DELETE FROM appointments WHERE appointment_id = ?";
+
+        try (Connection conn = ConnectDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, appointment.getAppointmentId());
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+        }
     }
 }
