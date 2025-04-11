@@ -14,7 +14,7 @@ public class CoursesDAO {
     public static void initializeCoursesTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS courses (
-            course_id INT PRIMARY KEY,
+            course_id INTEGER PRIMARY KEY,
             course_code TEXT NOT NULL,
             course_name TEXT NOT NULL,
             section_number TEXT NOT NULL,

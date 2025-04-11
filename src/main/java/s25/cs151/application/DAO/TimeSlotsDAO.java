@@ -17,7 +17,7 @@ public class TimeSlotsDAO {
     public static void initializeTimeSlotsTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS time_slots (
-            time_slot_id INT PRIMARY KEY,
+            time_slot_id INTEGER PRIMARY KEY,
             from_time TEXT NOT NULL,
             to_time TEXT NOT NULL,
             from_hour INT NOT NULL,

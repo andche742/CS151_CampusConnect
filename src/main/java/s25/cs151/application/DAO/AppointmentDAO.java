@@ -18,7 +18,7 @@ public class AppointmentDAO {
     public static void initializeAppointmentsTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS appointments (
-            appointment_id INT PRIMARY KEY,
+            appointment_id INTEGER PRIMARY KEY,
             student_name TEXT NOT NULL,
             date TEXT NOT NULL,
             course_id INT NOT NULL,
