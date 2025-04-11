@@ -39,4 +39,9 @@ public class TimeSlots {
         this.fromTime = LocalTime.of(fromHour, fromMinute);
         this.toTime = LocalTime.of(toHour, toMinute);
     }
+
+    public TimeSlots(LocalTime fromTime, LocalTime toTime) {
+        this.fromTime = fromTime;
+        this.toTime = toTime;
+    }
 }

@@ -14,6 +14,7 @@ public class CoursesDAO {
     public static void initializeCoursesTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS courses (
+            course_id INT PRIMARY KEY,
             course_code TEXT NOT NULL,
             course_name TEXT NOT NULL,
             section_number TEXT NOT NULL,
@@ -111,5 +112,47 @@ public class CoursesDAO {
     public static boolean deleteCourse(Courses course) throws SQLException {
         // TODO: Implement delete operation for courses
         throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    /**
+     * Returns course_id from courses table
+     * 
+     * @param course_code Course code to search
+     * @return course_id as int
+     * @throws SQLException if error occurs.
+     */
+    public static int getCourseID(Connection conn, String courseCode) throws SQLException {
+        String sql = "SELECT course_id FROM courses HWERE course_code = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, courseCode);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("course_id");
+                } else {
+                    throw new SQLException("course_id not found");
+                }
+            }
+        }
+    }
+
+    public static Courses getCourseByID(Connection conn, int id) throws SQLException {
+        String sql = "SELECT * FROM course WHERE course_id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Courses(
+                        Integer.toString(rs.getInt("course_id")),
+                        rs.getString("course_code"),
+                        rs.getString("section_number"));
+                }
+                else {
+                    System.out.println("course_id: " + id + " not found");
+                    return null;
+                }
+            }
+        }
     }
 }

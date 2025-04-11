@@ -1,8 +1,10 @@
 package s25.cs151.application.DAO;
 
 import s25.cs151.application.models.ConnectDB;
+import s25.cs151.application.models.Courses;
 import s25.cs151.application.models.TimeSlots;
 import java.sql.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class TimeSlotsDAO {
     public static void initializeTimeSlotsTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS time_slots (
+            time_slot_id INT PRIMARY KEY,
             fromTime TEXT NOT NULL,
             toTime TEXT NOT NULL,
             fromHour INT NOT NULL,
@@ -117,6 +120,48 @@ public class TimeSlotsDAO {
     public static boolean deleteTimeslot(TimeSlots timeslot) throws SQLException {
         // TODO: Implement delete operation for timeslots
         throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    /**
+     * Returns course_id from courses table
+     * 
+     * @param course_code Course code to search
+     * @return course_id as int
+     * @throws SQLException if error occurs.
+     */
+    public static int getTimeSlotID(Connection conn, String fromTime, String toTime) throws SQLException {
+        String sql = "SELECT course_id FROM courses WHERE fromTime = ? AND toTime = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, fromTime);
+            stmt.setString(2, toTime);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("time_slot_id");
+                } else {
+                    throw new SQLException("time_slot_id not found");
+                }
+            }
+        }
+    }
+
+    public static TimeSlots getTimeSlotByID(Connection conn, int id) throws SQLException {
+        String sql = "SELECT * FROM time_slots WHERE time_slot_id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new TimeSlots(
+                        LocalTime.parse(rs.getString("fromTime")),
+                        LocalTime.parse(rs.getString("toTime")));
+                }
+                else {
+                    System.out.println("time_slot_id: " + id + " not found");
+                    return null;
+                }
+            }
+        }
     }
 
 }

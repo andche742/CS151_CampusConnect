@@ -19,6 +19,7 @@ public class OfficeHoursDAO {
     public static void initializeOfficeHoursTable() {
         String sql = """
         CREATE TABLE IF NOT EXISTS office_hours (
+            office_hour_key INT PRIMARY KEY,
             semester TEXT NOT NULL,
             year INTEGER NOT NULL,
             days TEXT NOT NULL,

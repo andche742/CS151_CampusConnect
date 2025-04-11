@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Appointment {
 
-
+    
     private String StudentFullName;
     private LocalDate ScheduleDate;
     private TimeSlots TimeSlot;
@@ -11,6 +11,18 @@ public class Appointment {
     private String Reason;
     private String Comments;
 
+    
+    public Appointment(String name, LocalDate date, TimeSlots timeslot, Courses course, String reason, String comment) {
+        setStudentFullName(name);
+        setScheduleDate(date);
+        setTimeSlots(timeslot);
+        setCourses(course);
+        setReason(reason);
+        setComments(comment);
+    }
+
+    // no arg constr
+    public Appointment() {}
 
     // getters
     public String getStudentFullName() {

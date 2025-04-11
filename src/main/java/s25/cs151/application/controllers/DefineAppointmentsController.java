@@ -3,14 +3,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import s25.cs151.application.DAO.AppointmentDAO;
 import s25.cs151.application.DAO.CoursesDAO;
 import s25.cs151.application.DAO.TimeSlotsDAO;
 import s25.cs151.application.models.Appointment;
 import s25.cs151.application.models.Courses;
 import s25.cs151.application.models.TimeSlots;
 import s25.cs151.application.services.PageNavigator;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class DefineAppointmentsController {
 
@@ -63,7 +67,7 @@ public class DefineAppointmentsController {
         PageNavigator.navigateTo("Home");
     }
 
-    private void validateInputs(Appointment appointment) {
+    private boolean validateInputs(Appointment appointment) {
 
         // get the variables
         String name = studentNameTextField.getText();
@@ -78,25 +82,25 @@ public class DefineAppointmentsController {
         if (name == null || name.trim().isEmpty()) {
             studentNameTextField.setStyle("-fx-text-fill: red;");
             errorMessageLabel.setText("Student name is required.");
-            return;
+            return false;
         }
 
         if (date == null) {
             scheduleDatePicker.setStyle("-fx-border-color: red;");
             errorMessageLabel.setText("Schedule date is required.");
-            return;
+            return false;
         }
 
         if (timeSlot == null ) {
             timeSlotComboBox.setStyle("-fx-border-color: red;");
             errorMessageLabel.setText("Time slot is required.");
-            return;
+            return false;
         }
 
         if (course == null ) {
             courseComboBox.setStyle("-fx-border-color: red;");
             errorMessageLabel.setText("Course is required.");
-            return;
+            return false;
         }
 
         // create office hours
@@ -117,7 +121,7 @@ public class DefineAppointmentsController {
         System.out.println("Course: " + course);
         System.out.println("Reason: " + reason);
         System.out.println("Comment: " + comment);
-
+        return true;
     }
 
 
@@ -127,8 +131,47 @@ public class DefineAppointmentsController {
 
         // validates the boxes and returns a new appointment in param
         Appointment appointment = new Appointment();
-        validateInputs(appointment);
+        if (validateInputs(appointment)) {
 
+            boolean saved;
+
+            try {
+                saved = AppointmentDAO.saveAppointments(appointment);
+            }
+            catch (SQLException e) {
+                showAlert("Database Error", "Something went wrong: \n" + e.getMessage());
+                e.printStackTrace();
+                return;
+            }
+
+            if (saved) {
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                confirm.setTitle("Success");
+                confirm.setHeaderText("Appointment successfully defined.");
+
+                Optional<ButtonType> result = confirm.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                  PageNavigator.navigateTo("Schedule");
+                } 
+            } else {
+                errorMessageLabel.setText("Error saving appointment. Please try again.");
+            }
+        }
+
+    }
+
+    /**
+     * Shows an alert dialog with the given title and message
+     * 
+     * @param title the alert title
+     * @param message the alert message
+     */
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
