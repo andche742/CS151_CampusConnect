@@ -17,11 +17,11 @@
     <TableView fx:id="scheduleTable" prefHeight="280" prefWidth="700">
         <columns>
             <TableColumn fx:id="studentFullNameColumn" prefWidth="130.0" text="Name" />
-            <TableColumn fx:id="scheduleDateColumn" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="timeSlotColumn" prefWidth="96.0" text="Time" />
-            <TableColumn fx:id="courseColumn" prefWidth="130.0" text="Course" />
-            <TableColumn fx:id="reasonColumn" prefWidth="112.0" text="Reason" />
-            <TableColumn fx:id="commentsColumn" prefWidth="146.0" text="Comments" />
+            <TableColumn fx:id="scheduleDateColumn" prefWidth="112.0" text="Date" />
+            <TableColumn fx:id="timeSlotColumn" prefWidth="116.0" text="Time" />
+            <TableColumn fx:id="courseColumn" prefWidth="140.0" text="Course" />
+            <TableColumn fx:id="reasonColumn" prefWidth="120.0" text="Reason" />
+            <TableColumn fx:id="commentsColumn" prefWidth="71.0" text="Comments" />
         </columns>
     </TableView>
 

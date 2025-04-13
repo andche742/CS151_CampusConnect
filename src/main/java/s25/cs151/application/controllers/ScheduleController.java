@@ -12,7 +12,6 @@ import s25.cs151.application.models.Appointment;
 import s25.cs151.application.models.Courses;
 import s25.cs151.application.models.TimeSlots;
 import s25.cs151.application.services.PageNavigator;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -43,6 +42,12 @@ public class ScheduleController {
         List<Appointment> AppointmentList = getAppointmentList();
         ObservableList<Appointment> data = FXCollections.observableArrayList(AppointmentList);
         scheduleTable.setItems(data);
+        scheduleDateColumn.setSortType(TableColumn.SortType.ASCENDING);
+        scheduleTable.getSortOrder().add(scheduleDateColumn);
+        scheduleTable.sort();
+        timeSlotColumn.setSortType(TableColumn.SortType.ASCENDING);
+        scheduleTable.getSortOrder().add(timeSlotColumn);
+        scheduleTable.sort();
     }
 
     private List<Appointment> getAppointmentList() {

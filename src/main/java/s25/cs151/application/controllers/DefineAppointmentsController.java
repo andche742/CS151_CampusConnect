@@ -34,7 +34,7 @@ public class DefineAppointmentsController {
         ObservableList<Courses> coursesData = FXCollections.observableArrayList(coursesList);
         courseComboBox.setItems(coursesData);
 
-        // Show only course code in dropdown
+         //Show only course code in dropdown
         courseComboBox.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Courses course, boolean empty) {
