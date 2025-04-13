@@ -3,8 +3,8 @@
 
 # who did what:
 1. Sneha - Appointment model & Define Appointment FXMl, Schedule FXML & Controller
-2. Andrew - 
-3. Meera - 
+2. Andrew - define appointment controller, appointment dao, find course/timeslot by id
+3. Meera - populate db, appointment fxml
 4. Rehaan - Testing and review
 
 
