@@ -152,7 +152,10 @@ public class DefineAppointmentsController {
                 Optional<ButtonType> result = confirm.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                   PageNavigator.navigateTo("Schedule");
-                } 
+                } else {
+                    // User clicked Cancel, navigate to Home
+                    PageNavigator.navigateTo("Home");
+                }
             } else {
                 errorMessageLabel.setText("Error saving appointment. Please try again.");
             }

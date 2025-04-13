@@ -86,7 +86,10 @@ public class DefineTimeSlotsController {
                 Optional<ButtonType> result = confirm.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                   PageNavigator.navigateTo("TimeSlots");
-                } 
+                } else {
+                    // User clicked Cancel, navigate to Home
+                    PageNavigator.navigateTo("Home");
+                }
             } else {
                 errorMessageLabel.setText("Error saving time slot. Please try again.");
             }
