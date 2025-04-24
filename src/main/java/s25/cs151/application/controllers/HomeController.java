@@ -18,6 +18,7 @@ public class HomeController {
         PageNavigator.navigateTo("Courses");
     }
 
+    public void goToSearch(){ PageNavigator.navigateTo("Search"); }
 
     public void placeHolder() {
     }

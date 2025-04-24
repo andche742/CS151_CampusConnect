@@ -38,7 +38,7 @@
 
         <Button fx:id="coursesButton" onAction="#goToCourses" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📚 Courses" />
 
-        <Button fx:id="searchButton" onAction="#placeHolder" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="🔍 Search" />
+        <Button fx:id="searchButton" onAction="#goToSearch" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="🔍 Search" />
     </HBox>
 
     <!-- Spacer to balance bottom -->

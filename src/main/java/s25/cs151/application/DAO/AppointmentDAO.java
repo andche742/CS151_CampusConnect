@@ -124,8 +124,8 @@ public class AppointmentDAO {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, appointment.getAppointmentId());
-
             int affectedRows = stmt.executeUpdate();
+            // if one row is deleted then return true
             return affectedRows > 0;
         }
     }
