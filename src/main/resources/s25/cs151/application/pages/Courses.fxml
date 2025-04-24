@@ -60,23 +60,38 @@
         </GridPane>
 
         <!-- Table View -->
+        <!-- Table View -->
         <VBox VBox.vgrow="ALWAYS">
             <padding>
                 <Insets bottom="20" left="50" right="50" />
             </padding>
-            <Label style="-fx-font-weight: bold;" text="All Courses (sorted by Course Code):" textFill="WHITE" />
-            <TableView fx:id="coursesTableView" VBox.vgrow="ALWAYS">
-                <columns>
-                    <TableColumn fx:id="courseCodeColumn" prefWidth="150" text="Course Code" />
-                    <TableColumn fx:id="courseNameColumn" prefWidth="350" text="Course Name" />
-                    <TableColumn fx:id="sectionNumberColumn" prefWidth="150" text="Section Number" />
-                </columns>
-            </TableView>
 
+            <Label style="-fx-font-weight: bold;" text="            All Courses (sorted by Course Code):" textFill="WHITE" />
+
+            <!-- Center the TableView -->
+            <HBox alignment="CENTER">
+                <TableView fx:id="coursesTableView"
+                           prefWidth="650"
+                           maxWidth="650"
+                           minWidth="650"
+                           prefHeight="300"
+                           style="-fx-border-color: white; -fx-border-width: 1;">
+                    <columns>
+                        <TableColumn fx:id="courseCodeColumn" prefWidth="150" maxWidth="150" minWidth="150" text="Course Code" />
+                        <TableColumn fx:id="courseNameColumn" prefWidth="350" maxWidth="350" minWidth="350" text="Course Name" />
+                        <TableColumn fx:id="sectionNumberColumn" prefWidth="150" maxWidth="150" minWidth="150" text="Section Number" />
+                    </columns>
+                </TableView>
+            </HBox>
+
+            <!-- Buttons aligned to the right -->
             <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 0 0 0;">
-                <!-- <Button fx:id="deleteButton" onAction="#handleReturnHome" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Delete Selected" /> -->
-                <Button fx:id="returnButton" onAction="#handleReturnHome" text="Return to Home" />
+                <Button fx:id="returnButton"
+                        onAction="#handleReturnHome"
+                        text="Return to Home"
+                        style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px;" />
             </HBox>
         </VBox>
+
     </VBox>
 </AnchorPane>

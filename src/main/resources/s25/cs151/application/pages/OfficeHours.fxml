@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0;"
-      xmlns="http://javafx.com/javafx/23.0.2"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="s25.cs151.application.controllers.OfficeHoursController">
+<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #1E88A0; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controllers.OfficeHoursController">
 
-<!-- Header -->
-<Label text="📋 Semester Office Hours"
-       style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" />
+    <!-- Header -->
+    <Label style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" text="📋 Semester Office Hours" />
 
-<!-- TableView Section -->
-<TableView fx:id="officeHoursTable" prefWidth="600" prefHeight="300">
-    <columns>
-        <TableColumn fx:id="yearColumn" text="Year" prefWidth="150"/>
-        <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="150"/>
-        <TableColumn fx:id="daysColumn" text="Days" prefWidth="300"/>
-    </columns>
-</TableView>
+    <!-- Centered TableView inside HBox wrapper -->
+    <HBox alignment="CENTER">
+        <TableView fx:id="officeHoursTable" maxWidth="600" minWidth="600" prefHeight="300" prefWidth="600" style="-fx-border-color: white; -fx-border-width: 1;">
+            <columns>
+                <TableColumn fx:id="yearColumn" maxWidth="182.0" minWidth="150" prefWidth="182.0" text="Year" />
+                <TableColumn fx:id="semesterColumn" maxWidth="198.0" minWidth="150" prefWidth="166.0" text="Semester" />
+                <TableColumn fx:id="daysColumn" maxWidth="300" minWidth="252.0" prefWidth="252.0" text="Days" />
+            </columns>
+        </TableView>
+    </HBox>
 
-<HBox alignment="CENTER" spacing="60">
-<!-- New Office Hours Button-->
-<Button text="Create New Office Hour"
-        onAction="#goToDefineSemesterOfficeHours"
-        style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
-        
-<!-- Home Button -->
-<Button text="Home"
-        onAction="#handleHomeButton"
-        style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" />
-</HBox>
+    <!-- Buttons below the table -->
+    <HBox alignment="CENTER" spacing="60">
+        <Button onAction="#goToDefineSemesterOfficeHours" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" text="Create New Office Hour" />
+
+        <Button onAction="#handleHomeButton" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-padding: 6 12;" text="Home" />
+    </HBox>
 </VBox>

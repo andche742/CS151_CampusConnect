@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="10" style="-fx-background-color: #1E88A0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controllers.SearchController">
+
+    <padding><Insets bottom="15" left="15" right="15" top="15" /></padding>
+
+    <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="Search Office Hours by Student" />
+
+    <HBox alignment="CENTER" spacing="10">
+        <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Student Name:" />
+        <TextField fx:id="studentNameField" prefWidth="200" promptText="Enter name" />
+        <Button onAction="#handleSearch" style="-fx-background-color: white; -fx-text-fill: #1E88A0;" text="Search" />
+    </HBox>
+
+    <HBox alignment="CENTER">
+        <TableView fx:id="scheduleTable" prefHeight="280" prefWidth="770" style="-fx-border-color: white; -fx-border-width: 1;">
+            <columns>
+                <TableColumn fx:id="studentFullNameColumn" prefWidth="130" text="Name" />
+                <TableColumn fx:id="scheduleDateColumn" prefWidth="112" text="Date" />
+                <TableColumn fx:id="timeSlotColumn" prefWidth="116" text="Time" />
+                <TableColumn fx:id="courseColumn" prefWidth="140" text="Course" />
+                <TableColumn fx:id="reasonColumn" prefWidth="120" text="Reason" />
+                <TableColumn fx:id="commentsColumn" prefWidth="103.0" text="Comments" />
+                <TableColumn fx:id="deleteColumn" prefWidth="48.0"/>
+            </columns>
+        </TableView>
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="30">
+        <Button onAction="#handleBack" style="-fx-background-color: white; -fx-text-fill: #1E88A0;" text="Back" />
+    </HBox>
+
+</VBox>

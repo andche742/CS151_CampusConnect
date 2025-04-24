@@ -22,7 +22,7 @@
 
     <!-- Spacer to push the buttons downward slightly -->
     <Pane VBox.vgrow="ALWAYS" />
-     <Button fx:id="officeHoursScheduleButton" onAction="#goToDefineAppointments"
+     <Button  onAction="#goToDefineAppointments"
              style="-fx-background-color: white; -fx-text-fill: #1E88A0;
              -fx-font-size: 16px; -fx-font-weight: bold;
               -fx-background-radius: 8; -fx-padding: 10 50;" text="Office Hours Schedule" />
@@ -32,13 +32,13 @@
 
     <!-- Horizontally Centered Buttons -->
     <HBox alignment="CENTER" spacing="60">
-        <Button fx:id="officeHoursButton" onAction="#goToOfficeHours" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="⏰ Office Hours" />
+        <Button onAction="#goToOfficeHours" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="⏰ Office Hours" />
 
-        <Button fx:id="timeSlotsButton" onAction="#goToTimeSlots" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📅 Time Slots" />
+        <Button onAction="#goToTimeSlots" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📅 Time Slots" />
 
-        <Button fx:id="coursesButton" onAction="#goToCourses" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📚 Courses" />
+        <Button onAction="#goToCourses" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="📚 Courses" />
 
-        <Button fx:id="searchButton" onAction="#placeHolder" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="🔍 Search" />
+        <Button onAction="#goToSearch" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-size: 14px; -fx-background-radius: 6;" text="🔍 Search" />
     </HBox>
 
     <!-- Spacer to balance bottom -->
