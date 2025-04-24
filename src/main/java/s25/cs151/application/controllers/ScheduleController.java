@@ -17,6 +17,7 @@ public class ScheduleController extends BaseScheduleController {
         appointments.setAll(AppointmentDAO.getAppointmentList());
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void applyDefaultSorting() {
         scheduleDateColumn.setSortType(TableColumn.SortType.ASCENDING);

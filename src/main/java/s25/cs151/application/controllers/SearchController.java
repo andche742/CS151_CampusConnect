@@ -73,6 +73,7 @@ public class SearchController  extends BaseScheduleController {
 
 
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void applyDefaultSorting() {
         scheduleDateColumn.setSortType(TableColumn.SortType.DESCENDING);
