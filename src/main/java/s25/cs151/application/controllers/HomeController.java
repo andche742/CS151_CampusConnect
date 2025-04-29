@@ -1,4 +1,5 @@
 package s25.cs151.application.controllers;
+import javafx.event.ActionEvent;
 import s25.cs151.application.services.PageNavigator;
 
 
@@ -14,5 +15,6 @@ public class HomeController {
     }
     public void goToSearch(){ PageNavigator.navigateTo("Search"); }
     public void goToDefineAppointments() { PageNavigator.navigateTo("DefineAppointments"); }
+    public void goToSchedule() { PageNavigator.navigateTo("Schedule");}
 }
 
