@@ -33,7 +33,6 @@ public class BaseScheduleController {
         loadAppointments();
         scheduleTable.setItems(appointments);
         applyDefaultSorting();
-        secondaryLoading();
     }
 
     // parent methods
@@ -55,7 +54,7 @@ public class BaseScheduleController {
         timeSlotColumn.setSortType(TableColumn.SortType.DESCENDING);
         scheduleTable.getSortOrder().setAll(scheduleDateColumn, timeSlotColumn);
         scheduleTable.sort();
-    };
+    }
     protected void filterStudentbyName(String input) {
         if ( input == null || input.isBlank() ) {
             loadAppointments();
@@ -71,14 +70,6 @@ public class BaseScheduleController {
     }
     protected void handleBack() {
         PageNavigator.navigateTo("Home");
-    };
-
-
-    protected void secondaryLoading() {
-        // override in subclasses if needed
-        // this is for adding delete in search table
-        // also for edit option
     }
-
 
 }
