@@ -49,8 +49,8 @@
                     <Label style="-fx-font-size: 26px; -fx-text-fill: #1E88A0; -fx-font-style: italic;" text="Office Hours" />
 
                     <HBox alignment="CENTER" spacing="30">
-                        <Button onAction="#goToSearch" style="-fx-background-color: #1E88A0; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 40;" text="View Schedule" />
-                        <Button onAction="#goToDefineAppointments" style="-fx-background-color: #1E88A0; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 40;" text="Edit Schedule" />
+                        <Button onAction="#goToSchedule" style="-fx-background-color: #1E88A0; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 40;" text="View Schedule" />
+                        <Button onAction="#goToEditOfficeHours" style="-fx-background-color: #1E88A0; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 40;" text="Edit Schedule" />
                     </HBox>
                 </VBox>
 

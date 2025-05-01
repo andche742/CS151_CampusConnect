@@ -31,7 +31,7 @@
                 <TableColumn fx:id="timeSlotColumn" prefWidth="116.0" maxWidth="116" minWidth="116" text="Time" />
                 <TableColumn fx:id="courseColumn" prefWidth="140.0" maxWidth="140" minWidth="140" text="Course" />
                 <TableColumn fx:id="reasonColumn" prefWidth="120.0" maxWidth="120" minWidth="120" text="Reason" />
-                <TableColumn fx:id="commentsColumn" prefWidth="71.0" maxWidth="71" minWidth="71" text="Comments" />
+                <TableColumn fx:id="commentsColumn" text="Comments" />
             </columns>
         </TableView>
     </HBox>

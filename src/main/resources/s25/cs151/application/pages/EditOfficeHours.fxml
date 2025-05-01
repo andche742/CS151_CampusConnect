@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="s25.cs151.application.controllers.EditOfficeHoursController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-background-color: #1E88A0; -fx-padding: 30;">
+
+    <!-- Title -->
+    <Label text="Edit Office Hours"
+           style="-fx-font-size: 30px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+    <!-- Search Section Centered -->
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="searchField" promptText="Enter student name..."
+                   prefWidth="280"
+                   style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-prompt-text-fill: #90A4AE; -fx-background-radius: 8;" />
+        <Button text="Search" onAction="#handleSearch"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-background-radius: 8;" />
+    </HBox>
+
+    <!-- Table Section (Smaller) -->
+    <TableView fx:id="scheduleTable" prefHeight="280" prefWidth="770" style="-fx-border-color: white; -fx-border-width: 1;">
+        <columns>
+            <TableColumn fx:id="studentFullNameColumn" prefWidth="130" text="Name" />
+            <TableColumn fx:id="scheduleDateColumn" prefWidth="112" text="Date" />
+            <TableColumn fx:id="timeSlotColumn" prefWidth="116" text="Time" />
+            <TableColumn fx:id="courseColumn" prefWidth="140" text="Course" />
+            <TableColumn fx:id="reasonColumn" prefWidth="120" text="Reason" />
+            <TableColumn fx:id="commentsColumn"  text="Comments" />
+        </columns>
+    </TableView>
+
+    <!-- Action Buttons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="editButton" text="Edit Selected"
+                disable="true" onAction="#onEdit"
+                style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 20;" />
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </HBox>
+</VBox>

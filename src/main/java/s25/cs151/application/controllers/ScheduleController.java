@@ -1,20 +1,16 @@
 package s25.cs151.application.controllers;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import s25.cs151.application.DAO.AppointmentDAO;
 import s25.cs151.application.services.PageNavigator;
 
 
 public class ScheduleController extends BaseScheduleController {
     public Button backButton;
-
-    public void handleBack() {
-        PageNavigator.navigateTo("DefineAppointments");
-    }
-
+   @FXML
     @Override
-    protected void loadAppointments() {
-        appointments.setAll(AppointmentDAO.getAppointmentList());
+    protected void handleBack() {
+        PageNavigator.navigateTo("Home");
     }
 
     @SuppressWarnings("unchecked")

@@ -14,7 +14,7 @@ public class HomeController {
         PageNavigator.navigateTo("Courses");
     }
     public void goToSearch(){ PageNavigator.navigateTo("Search"); }
-    public void goToDefineAppointments() { PageNavigator.navigateTo("DefineAppointments"); }
     public void goToSchedule() { PageNavigator.navigateTo("Schedule");}
+    public void goToEditOfficeHours() { PageNavigator.navigateTo("EditOfficeHours"); }
 }
 

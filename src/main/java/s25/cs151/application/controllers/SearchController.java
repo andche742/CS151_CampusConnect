@@ -1,99 +1,66 @@
 package s25.cs151.application.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import s25.cs151.application.DAO.AppointmentDAO;
 import s25.cs151.application.models.Appointment;
 import s25.cs151.application.services.PageNavigator;
 
 import java.sql.SQLException;
-import java.util.List;
 
-public class SearchController  extends BaseScheduleController {
-    public TextField studentNameField;
-    @FXML private TableColumn<Appointment, Void> deleteColumn;
+public class SearchController extends BaseScheduleController {
 
+    @FXML private TextField studentNameField;
+    @FXML private Button deleteButton;
 
-    @Override
-    protected void loadAppointments() {
-        appointments.setAll(AppointmentDAO.getAppointmentList());
-    }
+    private Appointment selectedAppointment;
 
-    // loads delete button in the table
-    @Override
-    protected void secondaryLoading() {
-        addDeleteButton();
-    }
+    @FXML
+    public void initialize() {
+        super.initialize();
 
-    // adds the delete button
-    private void addDeleteButton() {
-        deleteColumn.setCellFactory(
-                column -> new TableCell<>() {
-                    private final Button deleteButton = new Button("delete");
+        // Select a row to enable the delete button
+        scheduleTable.getSelectionModel().selectedItemProperty()
+                .addListener((obs, oldVal, newVal) -> {
+            selectedAppointment = newVal;
+            deleteButton.setDisable(newVal == null);
+        });
 
-                    {
-                        deleteButton.setStyle("-fx-text-fill: red; -fx-font-size: 9px;");
-                        deleteButton.setOnAction(event -> {
-                            Appointment appointment = getTableView().getItems().get(getIndex());
-                            try {
-                                boolean success = AppointmentDAO.deleteAppointment(appointment);
-                                if (success) {
-                                    appointments.remove(appointment);// remove from table if successful
-                                    handleSearch();
-                                    System.out.println("Appointment deleted successfully.");
-                                } else {
-                                    System.out.println("Failed to delete appointment.");
-                                }
-                            } catch (SQLException e) {
-                                e.printStackTrace(); // or log it
-                                System.out.println("Database error occurred while deleting appointment.");
-                            }
-                        });
-                    }
-                    // this is a override method in tableCell<> which needs to be called
-                    // while updating a table cell
-                    // if cell empty = clear the cell
-                    // if cell has value = display the delete button
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null); // nothing in this row
-                        } else {
-                            setGraphic(deleteButton); // show button
-                        }
-                    }
-                }
-        );
-    }
-
-
-
-    @SuppressWarnings("unchecked")
-    @Override
-    protected void applyDefaultSorting() {
-        scheduleDateColumn.setSortType(TableColumn.SortType.DESCENDING);
-        timeSlotColumn.setSortType(TableColumn.SortType.DESCENDING);
-        scheduleTable.getSortOrder().setAll(scheduleDateColumn, timeSlotColumn);
-        scheduleTable.sort();
+        // Optional: live search
+        studentNameField.textProperty().addListener((obs, oldText, newText) -> {
+            filterStudentbyName(newText);
+        });
     }
 
     @FXML
-    private void handleSearch() {
-        String studentName = studentNameField.getText().toLowerCase().trim();
-        List<Appointment> filteredList = AppointmentDAO
-                .getAppointmentList().stream()
-                .filter(appt -> appt.getStudentFullName().toLowerCase().trim().contains(studentName))
-                .toList();
-        appointments.setAll(filteredList);
-        applyDefaultSorting();
+    private void handleSearch(ActionEvent event) {
+        filterStudentbyName(studentNameField.getText());
     }
 
-    public void handleBack() {
+    @FXML
+    private void handleDelete(ActionEvent event) {
+        if (selectedAppointment == null) return;
+        try {
+            boolean deleted = AppointmentDAO.deleteAppointment(selectedAppointment);
+            if (deleted) {
+                appointments.remove(selectedAppointment);
+                selectedAppointment = null;
+                deleteButton.setDisable(true);
+                System.out.println("Appointment deleted.");
+            } else {
+                System.out.println("Failed to delete appointment.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error during deletion.");
+        }
+    }
+
+    @FXML
+    @Override
+    protected void handleBack() {
         PageNavigator.navigateTo("Home");
     }
 }
