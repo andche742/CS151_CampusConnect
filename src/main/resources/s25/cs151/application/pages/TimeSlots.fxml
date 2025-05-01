@@ -9,7 +9,7 @@
       fx:controller="s25.cs151.application.controllers.TimeSlotsController">
 
     <!-- Header -->
-    <Label text="📅 Time Slots"
+    <Label text=" Time Slots"
            style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" />
 
     <!-- TableView Section -->

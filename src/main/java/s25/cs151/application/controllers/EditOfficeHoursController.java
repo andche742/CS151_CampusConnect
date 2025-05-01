@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import s25.cs151.application.models.Appointment;
-//import s25.cs151.application.services.EditFormContext;
+import s25.cs151.application.services.EditFormContext;
 import s25.cs151.application.services.PageNavigator;
 
 public class EditOfficeHoursController extends BaseScheduleController {
@@ -41,7 +41,7 @@ public class EditOfficeHoursController extends BaseScheduleController {
         if (selectedAppointment == null) return;
 
         // Store selected appointment in shared context
-        //EditFormContext.setSelectedAppointment(selectedAppointment);
+        EditFormContext.setSelectedAppointment(selectedAppointment);
 
         // Navigate to the edit form
         PageNavigator.navigateTo("EditAppointmentForm.fxml");
