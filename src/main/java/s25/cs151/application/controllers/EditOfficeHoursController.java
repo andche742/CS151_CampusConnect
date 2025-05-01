@@ -27,9 +27,8 @@ public class EditOfficeHoursController extends BaseScheduleController {
         });
 
         // Optional: live search
-        searchField.textProperty().addListener((observableValue, oldText, newText) -> {
-            super.filterStudentbyName(newText);
-        });
+        searchField.textProperty().addListener((observableValue, oldText, newText) ->
+                super.filterStudentbyName(newText));
     }
 
     @FXML

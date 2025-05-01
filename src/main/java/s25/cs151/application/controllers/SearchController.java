@@ -29,9 +29,7 @@ public class SearchController extends BaseScheduleController {
         });
 
         // Optional: live search
-        studentNameField.textProperty().addListener((obs, oldText, newText) -> {
-            filterStudentbyName(newText);
-        });
+        studentNameField.textProperty().addListener((obs, oldText, newText) -> filterStudentbyName(newText));
     }
 
     @FXML

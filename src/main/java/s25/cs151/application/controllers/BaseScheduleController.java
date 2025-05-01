@@ -48,6 +48,8 @@ public class BaseScheduleController {
     protected void loadAppointments() {
         appointments.setAll(AppointmentDAO.getAppointmentList());
     }
+
+    @SuppressWarnings("unchecked")
     protected void applyDefaultSorting(){
         scheduleDateColumn.setSortType(TableColumn.SortType.DESCENDING);
         timeSlotColumn.setSortType(TableColumn.SortType.DESCENDING);
