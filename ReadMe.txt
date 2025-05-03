@@ -1,5 +1,5 @@
 # Name of application: Campus Connect
-# Version: 0.7
+# Version: 0.8
 
 # who did what:
 1. Sneha - BaseScheduleController, refactored previous schedule controller,
