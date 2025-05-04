@@ -62,7 +62,7 @@ public class BaseScheduleController {
             String studentName = input.toLowerCase().trim();
             List<Appointment> filteredList = AppointmentDAO.getAppointmentList().stream()
                     .filter(appt -> appt.getStudentFullName().toLowerCase().trim()
-                            .contains(input)).toList();
+                            .contains(studentName)).toList();
             appointments.setAll(filteredList);
         }
         scheduleTable.setItems(appointments);
