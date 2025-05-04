@@ -129,4 +129,31 @@ public class AppointmentDAO {
             return affectedRows > 0;
         }
     }
+
+
+    /**
+     * Updates an existing Appointment record in the appointments table.
+     *
+     * @param appointment The Appointment object with updated data.
+     * @return true if the appointment was updated successfully.
+     * @throws SQLException if a database error occurs.
+     */
+    public static boolean updateAppointments(Appointment appointment) throws SQLException {
+        String sql = "UPDATE appointments SET student_name = ?, date = ?, course_id = ?, time_slot_id = ?, reason = ?, comment = ? WHERE appointment_id = ?";
+
+        try (Connection conn = ConnectDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, appointment.getStudentFullName());
+            stmt.setString(2, appointment.getScheduleDate().toString());
+            stmt.setInt(3, Integer.parseInt(appointment.getCourses().getCourseCode()));
+            stmt.setInt(4, TimeSlotsDAO.getTimeSlotID(conn, appointment.getTimeSlots().getFromTime(), appointment.getTimeSlots().getToTime()));
+            stmt.setString(5, appointment.getReason());
+            stmt.setString(6, appointment.getComments());
+            stmt.setInt(7, appointment.getAppointmentId());
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+        }
+    }
 }

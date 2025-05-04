@@ -13,9 +13,13 @@
 
         <Button maxWidth="160" minWidth="160" onAction="#goToTimeSlots" prefWidth="160" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8;" text="Define Time Slots" />
 
+        <Button maxWidth="160" minWidth="160" onAction="#goToDefineAppointment" prefWidth="160" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8;" text="Define Appointments" />
+
         <Button maxWidth="160" minWidth="160" onAction="#goToCourses" prefWidth="160" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8;" text="Manage Courses" />
 
         <Button maxWidth="160" minWidth="160" onAction="#goToSearch" prefWidth="160" style="-fx-background-color: white; -fx-text-fill: #1E88A0; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8;" text="Search" />
+    
+
     </VBox>
 
     <!-- Center content area -->

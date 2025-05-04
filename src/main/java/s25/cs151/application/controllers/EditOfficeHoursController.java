@@ -44,7 +44,7 @@ public class EditOfficeHoursController extends BaseScheduleController {
         EditFormContext.setSelectedAppointment(selectedAppointment);
 
         // Navigate to the edit form
-        PageNavigator.navigateTo("EditAppointmentForm.fxml");
+        PageNavigator.navigateTo("EditAppointmentForm");
     }
 
     @FXML

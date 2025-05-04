@@ -113,6 +113,6 @@ public class Courses {
      */
     @Override
     public String toString() {
-        return  courseName.get() + " -" + sectionNumber.get();
+        return  courseName.get();
     }
 }
